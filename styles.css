@@ -24,6 +24,18 @@ body {
     color: #2C1F14;
     overflow-x: hidden;
 }
+/* ================================================================
+   MOBILE TAP HIGHLIGHT REMOVAL
+================================================================ */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Allow text selection on form inputs and textareas */
+input, textarea, [contenteditable] {
+    -webkit-tap-highlight-color: auto;
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
@@ -567,33 +579,6 @@ nav a.active span { width: 100% !important; background-color: #C9A96E !important
 }
 
 /* ================================================================
-   ██████╗ ██████╗ ██╗ ██████╗███████╗    ██╗     ██╗███████╗████████╗
-   ██╔══██╗██╔══██╗██║██╔════╝██╔════╝    ██║     ██║██╔════╝╚══██╔══╝
-   ██████╔╝██████╔╝██║██║     █████╗      ██║     ██║███████╗   ██║   
-   ██╔═══╝ ██╔══██╗██║██║     ██╔══╝      ██║     ██║╚════██║   ██║   
-   ██║     ██║  ██║██║╚██████╗███████╗    ███████╗██║███████║   ██║   
-   ╚═╝     ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝    ╚══════╝╚═╝╚══════╝   ╚═╝   
-
-   TARGETED LIGHT PALETTE OVERRIDE
-   Sections: #pricelist · #experience · #workspace
-   
-   Rules: NO layout / positioning / dimension properties touched.
-          NO hero, navbar, iframe, or video selectors.
-          Color, background, shadow, and text ONLY.
-   
-   Brand Tokens:
-     Blush Surface   → #FDF1ED
-     Silk Cream      → #FAF6F0
-     Card White      → #FFFFFF
-     Metallic Gold   → #D4AF37
-     Deep Stone      → #1A1513
-     Warm Stone      → #6E5D4F
-     Gold Border     → rgba(212, 175, 55, 0.22)
-     Deep Shadow A   → rgba(26, 21, 19, 0.18)
-     Deep Shadow B   → rgba(26, 21, 19, 0.10)
-================================================================ */
-
-/* ================================================================
    §1  PRICE LIST SECTION — #pricelist
        Replace dark bg-nb-dark with blush pink surface
 ================================================================ */
@@ -937,21 +922,6 @@ nav a.active span { width: 100% !important; background-color: #C9A96E !important
    END OF TARGETED OVERRIDE BLOCK
 ================================================================ */
 
-/* ================================================================
-   ╔══════════════════════════════════════════════════════════════╗
-   ║   SITE-WIDE BRAND CONSISTENCY PASS                          ║
-   ║   Coverage: Hero → Footer (all sections)                    ║
-   ║                                                             ║
-   ║   Rules applied:                                            ║
-   ║   • font-script headings        → #d0aa73 (logo gold)      ║
-   ║   • All cards                   → #f1d9d3 bg + 3D shadow   ║
-   ║   • Buttons                     → balanced per bg context  ║
-   ║   • Body / label text           → #5c3d2e (warm stone)     ║
-   ║   • Section titles (display)    → #3a2318 (deep warm)      ║
-   ║   • Gold accents / prices       → #d0aa73                  ║
-   ║   NO layout, dimension, or      position properties        ║
-   ╚══════════════════════════════════════════════════════════════╝
-================================================================ */
 
 /* ================================================================
    §0  CSS CUSTOM PROPERTIES — single source of truth
@@ -1605,12 +1575,74 @@ nav a.active span { width: 100% !important; background-color: #C9A96E !important
 }
 
 /* ================================================================
-   §11  FOOTER
+   §11  FOOTER + SERVICES (shared dark background)
 ================================================================ */
-footer {
+footer,
+#services {
     background:
         radial-gradient(ellipse at 50% 0%, rgba(208,170,115,0.10) 0%, transparent 55%),
         #2c1a10 !important;
+}
+
+/* Services section specific text colors on dark bg */
+#services .font-script {
+    color: var(--bb-logo-gold) !important;
+}
+#services h3.font-display,
+#services h4.font-display {
+    color: var(--bb-title-text) !important;
+}
+#services p.text-nb-cream\/60,
+#services p.text-nb-cream\/70 {
+    color: rgba(241, 217, 211, 0.70) !important;
+}
+#services .text-nb-gold {
+    color: var(--bb-logo-gold) !important;
+}
+
+/* Service cards on dark background */
+#services .glass-card {
+    background: rgba(255, 253, 249, 0.95) !important;
+    border-color: rgba(208, 170, 115, 0.25) !important;
+}
+#services .glass-card:hover {
+    background: #ffffff !important;
+    border-color: rgba(208, 170, 115, 0.45) !important;
+}
+#services .glass-card i {
+    color: var(--bb-logo-gold) !important;
+}
+#services .glass-card h4.font-display {
+    color: var(--bb-title-text) !important;
+}
+#services .glass-card p {
+    color: var(--bb-body-text) !important;
+}
+
+/* Download button in services */
+#services button[onclick="downloadPriceList()"] {
+    background-color: var(--bb-logo-gold) !important;
+    color: #3a2318 !important;
+}
+#services button[onclick="downloadPriceList()"]:hover {
+    background-color: var(--bb-logo-gold-dk) !important;
+}
+
+/* Drinks note */
+#services .bg-nb-gold\/10 {
+    background: rgba(208, 170, 115, 0.12) !important;
+    border-color: rgba(208, 170, 115, 0.25) !important;
+}
+#services .text-nb-cream\/60 {
+    color: rgba(241, 217, 211, 0.65) !important;
+}
+#services .text-nb-gold\/60 {
+    color: var(--bb-logo-gold) !important;
+}
+
+/* Remove old conflicting pricelist overrides that targeted light bg */
+#pricelist {
+    background: none !important;
 }
 /* Logo tagline */
 footer p.text-nb-cream\/70 {
@@ -1751,6 +1783,15 @@ footer .bg-nb-charcoal.rounded-full {
 }
 #mobile-menu a {
     color: var(--bb-body-text) !important;
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+}
+#mobile-menu a:active,
+#mobile-menu a:focus {
+    background: transparent !important;
+    color: var(--bb-body-text) !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
 /* Mobile "Book Now" pill */
 #mobile-menu a[href="#contact"].border {

@@ -44,6 +44,12 @@
 <base target="_blank">
 
 <style>
+/* ===== SMOOTH SCROLL + NAV OFFSET ===== */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
 /* ===== INFINITE GALLERY SCROLLER ===== */
 .gallery-scroller {
     display: flex;
@@ -108,7 +114,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex items-center justify-between">
                 <a href="#" class="flex items-center gap-3 group">
-                    <img src="Assets/Lond-2nd.webp" alt="Nature's Beauty Corner Logo" class="h-20 w-25 object-contain">
+                    <img src="Assets/Lond-2nd.webp" alt="Nature's Beauty Corner Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain">
                     <div class="hidden sm:block">
                     </div>
                 </a>
@@ -122,8 +128,8 @@
                         Team
                         <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#pricelist" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
-                        Price List
+                    <a href="#services" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
+                        Our Services
                         <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
                     </a>
                     <a href="#gallery" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
@@ -132,6 +138,10 @@
                     </a>
                     <a href="#workspace" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
                         Space
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#experience" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
+                        Experience
                         <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
                     </a>
                     <a href="#contact" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
@@ -146,15 +156,50 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full glass border-t border-nb-gold/10">
-            <div class="px-6 py-8 flex flex-col gap-6">
-                <a href="#about" class="text-sm tracking-widest uppercase text-nb-stone">About</a>
-                <a href="#team" class="text-sm tracking-widest uppercase text-nb-stone">Team</a>
-                <a href="#pricelist" class="text-sm tracking-widest uppercase text-nb-stone">Price List</a>
-                <a href="#gallery" class="text-sm tracking-widest uppercase text-nb-stone">Gallery</a>
-                <a href="#workspace" class="text-sm tracking-widest uppercase text-nb-stone">Workspace</a>
-                <a href="#experience" class="text-sm tracking-widest uppercase text-nb-stone">Experience</a>
-                <a href="#contact" class="text-sm tracking-widest uppercase text-nb-black border border-nb-black px-6 py-3 text-center rounded-full">Book Now</a>
+        <div id="mobile-menu" class="fixed inset-0 z-50 translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+            <!-- Backdrop -->
+            <div id="mobile-backdrop" class="absolute inset-0 bg-nb-dark/90 backdrop-blur-md"></div>
+
+            <!-- Menu Panel -->
+            <div class="absolute inset-y-0 right-0 w-full sm:w-[400px] bg-nb-cream shadow-2xl flex flex-col overflow-y-auto">
+                <!-- Header with close button only -->
+                <div class="flex items-center justify-end px-8 py-6 border-b border-nb-gold/15">
+                    <button id="mobile-close" class="w-12 h-12 rounded-full border border-nb-gold/20 flex items-center justify-center text-nb-stone hover:text-nb-black hover:border-nb-gold/40 hover:bg-nb-gold/10 transition-all duration-300">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Nav Links -->
+                <nav class="flex-1 flex flex-col justify-center px-8 gap-2">
+                    <a href="#about" class="mobile-nav-link block py-4 border-b border-nb-gold/10">
+                        <span class="font-display text-2xl text-nb-black tracking-wide">About</span>
+                    </a>
+                    <a href="#team" class="mobile-nav-link block py-4 border-b border-nb-gold/10">
+                        <span class="font-display text-2xl text-nb-black tracking-wide">Team</span>
+                    </a>
+                    <a href="#services" class="mobile-nav-link block py-4 border-b border-nb-gold/10">
+                        <span class="font-display text-2xl text-nb-black tracking-wide">Our Services</span>
+                    </a>
+                    <a href="#gallery" class="mobile-nav-link block py-4 border-b border-nb-gold/10">
+                        <span class="font-display text-2xl text-nb-black tracking-wide">Gallery</span>
+                    </a>
+                    <a href="#workspace" class="mobile-nav-link block py-4 border-b border-nb-gold/10">
+                        <span class="font-display text-2xl text-nb-black tracking-wide">Space</span>
+                    </a>
+                    <a href="#experience" class="mobile-nav-link block py-4 border-b border-nb-gold/10">
+                        <span class="font-display text-2xl text-nb-black tracking-wide">Experience</span>
+                    </a>
+                    <a href="#contact" class="mobile-nav-link block py-4 border-b border-nb-gold/10">
+                        <span class="font-display text-2xl text-nb-black tracking-wide">Contact</span>
+                    </a>
+                </nav>
+
+                <!-- Footer CTA -->
+                <div class="px-8 py-8 border-t border-nb-gold/15">
+                    <a href="#contact" class="mobile-nav-link block w-full py-4 bg-nb-gold text-nb-dark text-center text-sm tracking-widest uppercase font-medium rounded-full hover:bg-nb-light transition-all duration-300 btn-shine shadow-lg shadow-black/20">
+                        Book Appointment
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -307,7 +352,7 @@
                     </div>
                     <div class="text-center">
                         <h4 class="font-display text-xl text-nb-black tracking-wide">Ndalo</h4>
-                        <p class="text-nb-stone text-sm mt-1">Lead Stylist & Founder</p>
+                        <p class="text-nb-stone text-sm mt-1"> Stylist </p>
                         <div class="w-12 h-px bg-nb-gold mx-auto mt-3"></div>
                     </div>
                 </div>
@@ -376,25 +421,70 @@
     </section>
 
     <!-- ===== PRICE LIST SECTION ===== -->
-    <section id="pricelist" class="relative py-24 lg:py-32 bg-nb-dark overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(60,60,60,0.4)_0%,_transparent_50%)]"></div>
-        <div class="absolute -top-40 right-0 w-96 h-96 bg-nb-charcoal rounded-full filter blur-3xl opacity-30"></div>
-        <div class="absolute -bottom-40 left-0 w-96 h-96 bg-nb-stone rounded-full filter blur-3xl opacity-30"></div>
+    <section id="services" class="relative py-24 lg:py-32 overflow-hidden">
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div class="text-center mb-20 reveal-text">
-                <p class="font-script text-6xl md:text-7xl text-white mb-4">Price List</p>
+                <p class="font-script text-6xl md:text-7xl text-nb-gold mb-4">Our Services</p>
                 <div class="w-24 h-px bg-gradient-to-r from-transparent via-nb-gold/40 to-transparent mx-auto mt-6"></div>
-                <p class="text-nb-cream/60 mt-6 max-w-lg mx-auto">Opening price list valid from 01 June – 31 August 2025. Transparent pricing for all our premium services.</p>
+                <p class="text-nb-cream/70 mt-6 max-w-lg mx-auto">Premium hair, beauty, and wellness services crafted with passion and expertise. Every strand matters.</p>
+            </div>
 
-                <!-- Download Button -->
-                <button onclick="downloadPriceList()" class="mt-8 inline-flex items-center gap-3 px-8 py-4 bg-nb-gold text-nb-dark text-sm tracking-widest uppercase font-medium rounded-full hover:bg-nb-light transition-all duration-300 btn-shine shadow-lg shadow-black/20">
+            
+
+            <!-- Services Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 stagger-children">
+                <div class="glass-card rounded-3xl p-8 text-center reveal-text">
+                    <div class="w-14 h-14 rounded-full bg-nb-gold/15 flex items-center justify-center mx-auto mb-5 border border-nb-gold/20">
+                        <i class="fa-solid fa-wand-magic-sparkles text-nb-gold text-lg"></i>
+                    </div>
+                    <h4 class="font-display text-xl text-nb-black tracking-wide mb-2">Cornrows & Braids</h4>
+                    <p class="text-nb-stone text-sm leading-relaxed">Snoop, straight back, knotless braids, straight up, sweet & sour, and goddess braids — all sizes and styles.</p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 text-center reveal-text">
+                    <div class="w-14 h-14 rounded-full bg-nb-gold/15 flex items-center justify-center mx-auto mb-5 border border-nb-gold/20">
+                        <i class="fa-solid fa-scissors text-nb-gold text-lg"></i>
+                    </div>
+                    <h4 class="font-display text-xl text-nb-black tracking-wide mb-2">Weave Installation</h4>
+                    <p class="text-nb-stone text-sm leading-relaxed">Basic install, styling, frontal ponytail, curls, and bridal styling with precision lace and bleached knots.</p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 text-center reveal-text">
+                    <div class="w-14 h-14 rounded-full bg-nb-gold/15 flex items-center justify-center mx-auto mb-5 border border-nb-gold/20">
+                        <i class="fa-solid fa-eye text-nb-gold text-lg"></i>
+                    </div>
+                    <h4 class="font-display text-xl text-nb-black tracking-wide mb-2">Lashes</h4>
+                    <p class="text-nb-stone text-sm leading-relaxed">Cluster lashes and individual lash extensions for a natural or dramatic look that lasts.</p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 text-center reveal-text">
+                    <div class="w-14 h-14 rounded-full bg-nb-gold/15 flex items-center justify-center mx-auto mb-5 border border-nb-gold/20">
+                        <i class="fa-solid fa-hand text-nb-gold text-lg"></i>
+                    </div>
+                    <h4 class="font-display text-xl text-nb-black tracking-wide mb-2">Manicure & Pedicure</h4>
+                    <p class="text-nb-stone text-sm leading-relaxed">Tips, French, gel overlay, and custom nail art for hands and toes. Combo deals available.</p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 text-center reveal-text">
+                    <div class="w-14 h-14 rounded-full bg-nb-gold/15 flex items-center justify-center mx-auto mb-5 border border-nb-gold/20">
+                        <i class="fa-solid fa-heart-pulse text-nb-gold text-lg"></i>
+                    </div>
+                    <h4 class="font-display text-xl text-nb-black tracking-wide mb-2">IV Therapy</h4>
+                    <p class="text-nb-stone text-sm leading-relaxed">Glow drip for skin brightening and weight-loss drip for metabolism boost — administered by certified professionals.</p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 text-center reveal-text">
+                    <div class="w-14 h-14 rounded-full bg-nb-gold/15 flex items-center justify-center mx-auto mb-5 border border-nb-gold/20">
+                        <i class="fa-solid fa-child text-nb-gold text-lg"></i>
+                    </div>
+                    <h4 class="font-display text-xl text-nb-black tracking-wide mb-2">Kids Styling</h4>
+                    <p class="text-nb-stone text-sm leading-relaxed">Gentle braiding and styling for little ones — snoop, straight back, sweet & sour, and knotless.</p>
+                </div>
+            </div>
+
+            <!-- Download Price List Button -->
+            <div class="text-center mb-12 reveal-text">
+                <button onclick="downloadPriceList()" class="inline-flex items-center gap-3 px-8 py-4 bg-nb-gold text-nb-dark text-sm tracking-widest uppercase font-medium rounded-full hover:bg-nb-light transition-all duration-300 btn-shine shadow-lg shadow-black/20">
                     <i class="fa-solid fa-download"></i>
                     Download Price List
                 </button>
             </div>
-
-            
             <div class="mt-16 text-center reveal-text">
                 <div class="bg-nb-gold/10 backdrop-blur-md border border-nb-gold/20 inline-flex items-center gap-3 px-8 py-4 rounded-full">
                     <i class="fa-solid fa-mug-hot text-nb-gold/60 text-sm"></i>
@@ -481,7 +571,7 @@
 
                 <!-- Workspace Image 7 -->
                 <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
-                    <img src="Assets/kids.png" alt="Vanity Corner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <img src="Assets/products.png" alt="Vanity Corner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                         <p class="text-white font-display text-lg">Vanity Corner</p>
@@ -491,7 +581,7 @@
 
                 <!-- Workspace Image 8 -->
                 <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
-                    <img src="Assets/bed.png" alt="Full Salon View" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <img src="Assets/chairs.png" alt="Full Salon View" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                         <p class="text-white font-display text-lg">The Full View</p>
@@ -772,7 +862,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12 justify-items-center md:justify-items-stretch">
                 <!-- Column 1: Logo -->
                 <div class="flex flex-col items-center md:items-start max-w-xs md:max-w-none mb-8 md:mb-0">
-                <img src="Assets/Lond-2nd.webp" alt="Nature's Beauty Corner Logo" class="h-20 w-25 object-contain">
+                <img src="Assets/Lond-2nd.webp" alt="Nature's Beauty Corner Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain">
                     <p class="text-nb-cream/70 text-sm leading-relaxed mt-8">Timeless Elegance, Naturally Yours. Premium hair, nails, lashes & IV therapy services crafted with passion and expertise.</p>
                 </div>
 
@@ -780,12 +870,12 @@
                 <div class="ml-0 md:ml-6">
                     <h4 class="font-display text-sm text-white tracking-widest uppercase mb-4">Services</h4>
                     <ul class="space-y-3">
-                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Cornrows & Braids</a></li>
-                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Weave Installation</a></li>
-                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Lashes</a></li>
-                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Manicure & Pedicure</a></li>
-                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">IV Therapy</a></li>
-                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Kids Styling</a></li>
+                        <li><a href="#services" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Cornrows & Braids</a></li>
+                        <li><a href="#services" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Weave Installation</a></li>
+                        <li><a href="#services" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Lashes</a></li>
+                        <li><a href="#services" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Manicure & Pedicure</a></li>
+                        <li><a href="#services" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">IV Therapy</a></li>
+                        <li><a href="#services" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Kids Styling</a></li>
                     </ul>
                 </div>
 
@@ -843,7 +933,7 @@
                 <div class="p-8 md:p-12">
                     <div class="flex justify-between items-start mb-8">
                         <div class="text-center w-full">
-                        <img src="Assets/Lond-2nd.webp" alt="Nature's Beauty Corner Logo" class="h-20 w-25 object-contain">
+                        <img src="Assets/Lond-2nd.webp" alt="Nature's Beauty Corner Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain">
                             <h2 class="font-display text-3xl text-nb-black tracking-widest uppercase">Price List</h2>
                             <p class="text-nb-stone text-sm mt-2">Opening Price List | Valid: 01 June – 31 August 2025</p>
                         </div>
@@ -961,14 +1051,108 @@
 
 
 <script>
-/* ===== INFINITE GALLERY SCROLLER ===== */
+/* ===== SMOOTH SCROLL + MOBILE MENU + INFINITE GALLERY SCROLLER ===== */
 (function() {
+    // Mobile menu toggle — full-screen slide-in
+    function initMobileMenu() {
+        var mobileBtn = document.getElementById('mobile-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var mobileClose = document.getElementById('mobile-close');
+        var mobileBackdrop = document.getElementById('mobile-backdrop');
+        var mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        var bodyScrollTop = 0;
+        if (!mobileBtn || !mobileMenu) return;
+
+        function openMenu() {
+            bodyScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.top = '-' + bodyScrollTop + 'px';
+            document.body.style.width = '100%';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, bodyScrollTop);
+        }
+
+        mobileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openMenu();
+        });
+
+        if (mobileClose) {
+            mobileClose.addEventListener('click', closeMenu);
+        }
+
+        if (mobileBackdrop) {
+            mobileBackdrop.addEventListener('click', closeMenu);
+        }
+
+        mobileLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = link.getAttribute('href');
+                if (href && href.charAt(0) === '#') {
+                    e.preventDefault();
+                    closeMenu();
+                    setTimeout(function() {
+                        var target = document.querySelector(href);
+                        if (target) {
+                            var navHeight = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 0;
+                            var targetPosition = target.getBoundingClientRect().top + bodyScrollTop - navHeight - 20;
+                            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                        }
+                    }, 300);
+                } else {
+                    closeMenu();
+                }
+            });
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+                closeMenu();
+            }
+        });
+    }
+
+    // Smooth scroll for all anchor links
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                var target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    var navHeight = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 0;
+                    var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    var mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    }
+
+    // Infinite horizontal gallery scroller
     function initInfiniteScroller() {
         const track1 = document.getElementById('gallery-col-1');
         const track2 = document.getElementById('gallery-col-2');
         if (!track1 || !track2) return;
 
-        // Clone all children into each track for seamless horizontal loop
         [track1, track2].forEach(track => {
             const items = Array.from(track.children);
             items.forEach(item => {
@@ -978,10 +1162,16 @@
         });
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initInfiniteScroller);
-    } else {
+    function init() {
+        initMobileMenu();
+        initSmoothScroll();
         initInfiniteScroller();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
     }
 })();
 </script>
