@@ -1,0 +1,1793 @@
+/* ================================================================
+   BLOOM & BREEZE BEAUTY BAR — Brand Colour System
+   
+   Palette extracted from logo + salon imagery:
+   --bb-gold:        #C9A96E  → rich warm gold (logo, lettering, accents)
+   --bb-gold-light:  #E2C68A  → light gold / champagne
+   --bb-gold-deep:   #9A7340  → deep burnished bronze
+   --bb-blush:       #F2D9D5  → soft blush pink (warm undertone)
+   --bb-blush-mid:   #E8C4BC  → mid blush, used for hover states
+   --bb-cream:       #FAF6F1  → warm ivory cream (salon walls)
+   --bb-cream-light: #FFFDF9  → near-white cream
+   --bb-ivory:       #F5EFE6  → ivory (furniture tone)
+   --bb-charcoal:    #1A1A1A  → deep charcoal / salon chairs
+   --bb-dark:        #2C1F14  → warm dark brown-black
+   --bb-stone:       #7A6152  → warm stone / warm grey
+   --bb-stone-light: #B09888  → lighter warm stone
+================================================================ */
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FFFDF9;
+    color: #2C1F14;
+    overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FAF6F1; }
+::-webkit-scrollbar-thumb { background: #E2C68A; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C9A96E; }
+
+/* ================================================================
+   GLASSMORPHISM — warm blush-cream tint
+================================================================ */
+.glass {
+    background: rgba(250, 246, 241, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(201, 169, 110, 0.22);
+    box-shadow: 0 8px 32px rgba(44, 31, 20, 0.07);
+}
+.glass-dark {
+    background: rgba(44, 31, 20, 0.62);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(201, 169, 110, 0.14);
+    box-shadow: 0 8px 32px rgba(44, 31, 20, 0.32);
+}
+.glass-card {
+    background: rgba(255, 253, 249, 0.82);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(226, 198, 138, 0.22);
+    box-shadow: 0 4px 24px rgba(44, 31, 20, 0.05), inset 0 0 0 1px rgba(255,253,249,0.5);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 48px rgba(44, 31, 20, 0.10), inset 0 0 0 1px rgba(201,169,110,0.30);
+    border-color: rgba(201, 169, 110, 0.40);
+}
+.glass-card-dark {
+    background: rgba(44, 36, 22, 0.78);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(201, 169, 110, 0.10);
+    box-shadow: 0 4px 24px rgba(44, 31, 20, 0.22);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-dark:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 48px rgba(44, 31, 20, 0.32);
+    border-color: rgba(201, 169, 110, 0.18);
+}
+
+/* ================================================================
+   COLOUR UTILITIES — aligned to brand
+================================================================ */
+.text-nb-black  { color: #1A1A1A !important; }
+.text-nb-stone  { color: #7A6152 !important; }
+.bg-nb-black    { background-color: #1A1A1A !important; }
+.bg-nb-charcoal { background-color: #2C1F14 !important; }
+.bg-nb-stone    { background-color: #ede8e3 !important; }
+.border-nb-black { border-color: rgba(44, 31, 20, 0.18) !important; }
+.from-nb-black  { 
+    --tw-gradient-from: #2C1F14; 
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(44 31 20 / 0)); 
+}
+
+/* ================================================================
+   HERO — blush-cream warm overlay instead of pure white
+================================================================ */
+.hero-video-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+.hero-video-container video,
+.hero-video-container iframe {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+.hero-video-container video {
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    object-fit: cover;
+}
+.hero-video-container iframe {
+    width: 100vw;
+    height: 56.25vw;
+    min-width: 177.78vh;
+    min-height: 100vh;
+    border: 0;
+    pointer-events: none;
+}
+/* Warm blush-cream overlay — brand-accurate */
+.hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(130, 130, 130, 0.22) 0%,   /* blush pink top */
+        rgba(94, 94, 81, 0.48) 30%,  /* cream mid */
+        rgba(42, 40, 38, 0.8) 65%,  /* warm cream lower */
+        rgba(96, 73, 46, 0.97) 100%);
+    z-index: 1;
+}
+.hero-video-overlay-dark {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(44,31,20,0.22) 0%, 
+        rgba(44,31,20,0.42) 40%, 
+        rgba(5, 3, 3, 0.72) 70%, 
+        rgba(44,31,20,0.97) 100%);
+    z-index: 1;
+}
+
+/* ================================================================
+   SECTION BACKGROUNDS — blush + cream + warm dark
+================================================================ */
+/* Light sections: warm ivory with blush radial accents */
+.mesh-white {
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(242, 217, 213, 0.28) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(226, 198, 138, 0.18) 0%, transparent 55%),
+        linear-gradient(180deg, #FFFDF9 0%, #FAF6F1 100%);
+}
+/* Dark sections: warm deep brown / charcoal */
+.mesh-dark {
+    background: 
+        radial-gradient(ellipse at 30% 20%, rgba(74, 50, 30, 0.45) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 80%, rgba(154, 115, 64, 0.22) 0%, transparent 55%),
+        linear-gradient(180deg, #1A1A1A 0%, #2C1F14 100%);
+}
+
+/* ================================================================
+   PRICE CARDS — stronger cream contrast
+================================================================ */
+#services .glass-card,
+#pricelist .price-image-card {
+    background: rgba(255, 253, 249, 0.99) !important;
+    border-color: rgba(201, 169, 110, 0.16) !important;
+    box-shadow: 0 20px 40px rgba(44, 31, 20, 0.09) !important;
+}
+#services .glass-card:hover,
+#pricelist .price-image-card:hover {
+    box-shadow: 0 24px 56px rgba(44, 31, 20, 0.13) !important;
+}
+
+/* ================================================================
+   FLOATING BLOBS — brand colours
+================================================================ */
+@keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    25%       { transform: translate(20px, -30px) scale(1.05); border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    50%       { transform: translate(-20px, 20px) scale(0.95); border-radius: 50% 60% 30% 60% / 30% 40% 70% 60%; }
+    75%       { transform: translate(30px, 10px) scale(1.02); border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%; }
+}
+.animate-blob       { animation: blob 10s ease-in-out infinite; }
+.animate-blob-slow  { animation: blob 15s ease-in-out infinite; }
+.animate-blob-delay { animation: blob 12s ease-in-out infinite; animation-delay: -5s; }
+
+/* ================================================================
+   SCROLL REVEAL
+================================================================ */
+.reveal-text { opacity: 1; transform: translateY(0); }
+.reveal-text.animate { opacity: 0; transform: translateY(60px); }
+.reveal-text.animate.active {
+    opacity: 1; transform: translateY(0);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stagger-children > * { opacity: 1; transform: translateY(0); }
+.stagger-children.animate > * { opacity: 0; transform: translateY(30px); }
+.stagger-children.animate.active > *:nth-child(1) { transition-delay: 0.10s; }
+.stagger-children.animate.active > *:nth-child(2) { transition-delay: 0.20s; }
+.stagger-children.animate.active > *:nth-child(3) { transition-delay: 0.30s; }
+.stagger-children.animate.active > *:nth-child(4) { transition-delay: 0.40s; }
+.stagger-children.animate.active > *:nth-child(5) { transition-delay: 0.50s; }
+.stagger-children.animate.active > *:nth-child(6) { transition-delay: 0.60s; }
+.stagger-children.animate.active > *:nth-child(7) { transition-delay: 0.70s; }
+.stagger-children.animate.active > *:nth-child(8) { transition-delay: 0.80s; }
+.stagger-children.animate.active > * {
+    opacity: 1; transform: translateY(0);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ================================================================
+   PRICE ROWS
+================================================================ */
+.price-item {
+    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(201,169,110,0.12);
+}
+.price-item:hover {
+    background: rgba(242, 217, 213, 0.25);   /* blush tint on hover */
+    padding-left: 1rem;
+    border-radius: 8px;
+    transform: translateX(4px);
+}
+.price-item-dark {
+    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(201,169,110,0.09);
+}
+.price-item-dark:hover {
+    background: rgba(201,169,110,0.08);
+    padding-left: 1rem;
+    border-radius: 8px;
+    transform: translateX(4px);
+}
+
+/* ================================================================
+   IMAGE HOVER ZOOM
+================================================================ */
+.img-zoom { overflow: hidden; position: relative; }
+.img-zoom img { transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.img-zoom:hover img { transform: scale(1.12); }
+
+/* ================================================================
+   BUTTON SHINE — gold shimmer
+================================================================ */
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+.btn-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.28), transparent);
+    transform: rotate(45deg) translateX(-100%);
+    transition: transform 0.6s ease;
+}
+.btn-shine:hover::after { transform: rotate(45deg) translateX(100%); }
+
+/* ================================================================
+   NAVBAR
+================================================================ */
+.nav-blur {
+    background: rgba(250, 246, 241, 0.88);   /* warm ivory */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(201,169,110,0.14);
+}
+
+/* ================================================================
+   OPERATING HOURS ROWS — blush tint on hover
+================================================================ */
+.day-slot { transition: all 0.3s ease; }
+.day-slot:hover {
+    background: rgba(242, 217, 213, 0.20);  /* blush pink hover */
+    transform: translateX(8px);
+}
+.day-slot-dark { transition: all 0.3s ease; }
+.day-slot-dark:hover {
+    background: rgba(201,169,110,0.07);
+    transform: translateX(8px);
+}
+
+/* ================================================================
+   SOCIAL BUTTONS
+================================================================ */
+.social-btn { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.social-btn:hover {
+    transform: translateY(-4px) rotate(8deg);
+    box-shadow: 0 12px 24px rgba(44,31,20,0.16);
+}
+
+/* ================================================================
+   MARQUEE
+================================================================ */
+@keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 30s linear infinite; }
+
+/* ================================================================
+   PULSE RING
+================================================================ */
+@keyframes pulse-ring {
+    0%   { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+.pulse-ring { animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* ================================================================
+   GRADIENT TEXT — gold shimmer
+================================================================ */
+.gradient-text {
+    background: linear-gradient(135deg, #C9A96E 0%, #9A7340 50%, #E2C68A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.gradient-text-light {
+    background: linear-gradient(135deg, #ffffff 0%, #E2C68A 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ================================================================
+   FORM INPUTS — blush-cream glass
+================================================================ */
+.input-glass {
+    background: rgba(250, 246, 241, 0.75);
+    border: 1px solid rgba(201,169,110,0.18);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+.input-glass:focus {
+    background: rgba(255, 253, 249, 0.97);
+    border-color: rgba(201,169,110,0.45);
+    box-shadow: 0 0 0 3px rgba(242, 217, 213, 0.35);  /* blush focus ring */
+    outline: none;
+}
+.input-glass-dark {
+    background: rgba(255,253,249,0.05);
+    border: 1px solid rgba(201,169,110,0.12);
+    color: white;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+.input-glass-dark:focus {
+    background: rgba(255,253,249,0.09);
+    border-color: rgba(201,169,110,0.28);
+    outline: none;
+}
+
+/* ================================================================
+   VIDEO CARD
+================================================================ */
+.video-card {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    min-width: 0;
+}
+.video-card iframe {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+}
+
+/* ================================================================
+   PRICE IMAGE CARD
+================================================================ */
+.price-image-card {
+    background: rgba(255, 253, 249, 0.99);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(201, 169, 110, 0.20);
+    box-shadow: 0 8px 40px rgba(44, 31, 20, 0.09), inset 0 0 0 1px rgba(255,253,249,0.65);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.price-image-card:hover {
+    transform: translateY(-6px) scale(1.005);
+    box-shadow: 0 24px 56px rgba(44, 31, 20, 0.13), inset 0 0 0 1px rgba(201,169,110,0.30);
+}
+.price-image-card img { transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.price-image-card:hover img { transform: scale(1.03); }
+
+.price-tag-glass {
+    background: rgba(250, 246, 241, 0.96);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(201,169,110,0.25);
+    box-shadow: 0 4px 16px rgba(44,31,20,0.06);
+}
+
+/* ================================================================
+   TEXT COLOUR CORRECTIONS — warm stone not grey
+================================================================ */
+.price-item .text-nb-stone,
+.price-image-card .text-nb-stone,
+.glass-card .text-nb-stone,
+.price-image-card p.text-nb-stone,
+.glass-card p.text-nb-stone {
+    color: #7A6152 !important;
+}
+
+/* ================================================================
+   TEAM SECTION
+================================================================ */
+#team .group { position: relative; }
+#team .group img {
+    filter: grayscale(15%);
+    transition: filter 0.5s ease;
+}
+#team .group:hover img { filter: grayscale(0%); }
+
+/* ================================================================
+   WORKSPACE SECTION
+================================================================ */
+#workspace .group { position: relative; }
+#workspace .group::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 1.5rem;
+    box-shadow: inset 0 0 0 1px rgba(201,169,110,0.15);
+    pointer-events: none;
+    transition: box-shadow 0.4s ease;
+}
+#workspace .group:hover::after {
+    box-shadow: inset 0 0 0 2px rgba(201,169,110,0.32);
+}
+
+/* ================================================================
+   VIDEO PLAY BUTTON PULSE
+================================================================ */
+@keyframes pulse-play {
+    0%   { box-shadow: 0 0 0 0 rgba(201,169,110,0.4); }
+    70%  { box-shadow: 0 0 0 20px rgba(201,169,110,0); }
+    100% { box-shadow: 0 0 0 0 rgba(201,169,110,0); }
+}
+.pulse-play { animation: pulse-play 2s infinite; }
+
+/* ================================================================
+   ABOUT SECTION — blush accent block on card hover
+================================================================ */
+#about .glass-card:hover,
+#about .glass:hover {
+    border-color: rgba(242, 217, 213, 0.55) !important;
+}
+
+/* ================================================================
+   ABOUT FEATURE CARDS — blush tint on hover
+================================================================ */
+#about .glass.rounded-xl:hover {
+    background: rgba(242, 217, 213, 0.32) !important;
+    border-color: rgba(201, 169, 110, 0.32) !important;
+}
+
+/* ================================================================
+   EXPERIENCE SECTION — feature card blush detail
+================================================================ */
+#experience .glass-card-dark:hover {
+    border-color: rgba(242, 217, 213, 0.15) !important;
+}
+
+/* ================================================================
+   FOOTER — warm dark with gold accents (already correct — no change)
+================================================================ */
+
+/* ================================================================
+   PRINT — price list modal
+================================================================ */
+@media print {
+    body * { visibility: hidden; }
+    #price-list-modal, #price-list-modal * { visibility: visible; }
+    #price-list-modal {
+        position: absolute; left: 0; top: 0;
+        width: 100%; height: auto;
+        overflow: visible; background: white;
+    }
+    #price-list-modal .absolute { display: none !important; }
+    #price-list-modal > div > div {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+    }
+    .no-print { display: none !important; }
+    #price-list-modal .bg-nb-cream { background: white !important; }
+}
+
+/* ================================================================
+   TAILWIND COLOUR VARIABLE OVERRIDES
+   These override the nb-* tokens in tailwind.config to match
+   the Bloom & Breeze brand palette everywhere in the HTML.
+================================================================ */
+
+/* Gold — unchanged, already brand-accurate */
+/* nb-gold: #C9A96E ✓ */
+/* nb-light: #E2C68A ✓ (was C9A96E — bumped to champagne) */
+
+/* Cream backgrounds — blush-warm instead of pure white-cream */
+/* nb-cream: #FAF6F1 (warm ivory) ✓ */
+/* nb-warm:  #F2D9D5 (blush pink) — was F5E6D3, now brand blush */
+
+/* Dark — warm brown-black aligned to charcoal chairs */
+/* nb-dark:  #2C1F14 (warm dark) ✓ */
+/* nb-black: #1A1A1A ✓ */
+
+/* Stone — warm brown stone, NOT grey */
+/* nb-stone: #7A6152 ✓ */
+
+/* ================================================================
+   BLUSH PINK — override nb-warm to genuine blush
+================================================================ */
+.bg-nb-warm, [class*="bg-nb-warm"] {
+    background-color: #F2D9D5 !important;
+}
+.from-nb-warm {
+    --tw-gradient-from: #F2D9D5 !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(242,217,213,0)) !important;
+}
+.to-nb-warm {
+    --tw-gradient-to: #F2D9D5 !important;
+}
+
+/* ================================================================
+   ABOUT SECTION BACKGROUND ACCENT STRIP
+================================================================ */
+#about .absolute.top-0.right-0 {
+    background: linear-gradient(to left, rgba(242, 217, 213, 0.32), transparent) !important;
+}
+
+/* ================================================================
+   GALLERY SECTION — ivory bg instead of cool cream
+================================================================ */
+#gallery {
+    background-color: #FAF6F1 !important;
+}
+
+/* ================================================================
+   BOOKING FORM SUBMIT BUTTON — pulsing blush shadow on focus
+================================================================ */
+#booking-submit:focus {
+    box-shadow: 0 0 0 3px rgba(242, 217, 213, 0.55);
+    outline: none;
+}
+
+/* ================================================================
+   ACTIVE NAV LINK — gold underline (matches brand)
+================================================================ */
+nav a.active {
+    color: #C9A96E !important;
+}
+nav a.active span { width: 100% !important; background-color: #C9A96E !important; }
+
+/* ================================================================
+   SCROLLED NAV — blush-tinged glass
+================================================================ */
+#navbar.scrolled {
+    background: rgba(250, 246, 241, 0.92);
+    backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(242, 217, 213, 0.35);
+    box-shadow: 0 4px 24px rgba(44, 31, 20, 0.06);
+}
+
+/* ================================================================
+   ██████╗ ██████╗ ██╗ ██████╗███████╗    ██╗     ██╗███████╗████████╗
+   ██╔══██╗██╔══██╗██║██╔════╝██╔════╝    ██║     ██║██╔════╝╚══██╔══╝
+   ██████╔╝██████╔╝██║██║     █████╗      ██║     ██║███████╗   ██║   
+   ██╔═══╝ ██╔══██╗██║██║     ██╔══╝      ██║     ██║╚════██║   ██║   
+   ██║     ██║  ██║██║╚██████╗███████╗    ███████╗██║███████║   ██║   
+   ╚═╝     ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝    ╚══════╝╚═╝╚══════╝   ╚═╝   
+
+   TARGETED LIGHT PALETTE OVERRIDE
+   Sections: #pricelist · #experience · #workspace
+   
+   Rules: NO layout / positioning / dimension properties touched.
+          NO hero, navbar, iframe, or video selectors.
+          Color, background, shadow, and text ONLY.
+   
+   Brand Tokens:
+     Blush Surface   → #FDF1ED
+     Silk Cream      → #FAF6F0
+     Card White      → #FFFFFF
+     Metallic Gold   → #D4AF37
+     Deep Stone      → #1A1513
+     Warm Stone      → #6E5D4F
+     Gold Border     → rgba(212, 175, 55, 0.22)
+     Deep Shadow A   → rgba(26, 21, 19, 0.18)
+     Deep Shadow B   → rgba(26, 21, 19, 0.10)
+================================================================ */
+
+/* ================================================================
+   §1  PRICE LIST SECTION — #pricelist
+       Replace dark bg-nb-dark with blush pink surface
+================================================================ */
+
+/* Section background — override dark bg */
+#pricelist {
+    background:
+        radial-gradient(ellipse at 15% 10%, rgba(242, 217, 213, 0.45) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 90%, rgba(212, 175, 55, 0.10) 0%, transparent 50%),
+        #FDF1ED !important;
+}
+
+/* Kill the dark radial pseudo-overlays baked into the section */
+#pricelist > .absolute:first-of-type {
+    background: radial-gradient(ellipse at top left, rgba(253, 241, 237, 0.6) 0%, transparent 50%) !important;
+}
+#pricelist > .absolute.-top-40 {
+    background: rgba(212, 175, 55, 0.08) !important;
+}
+#pricelist > .absolute.-bottom-40 {
+    background: rgba(242, 217, 213, 0.25) !important;
+}
+
+/* Section header text */
+#pricelist .font-script,
+#pricelist p.font-script {
+    color: #1A1513 !important;
+}
+#pricelist .font-display,
+#pricelist h3.font-display,
+#pricelist h4.font-display {
+    color: #D4AF37 !important;
+}
+#pricelist p.text-nb-cream\/60 {
+    color: #6E5D4F !important;
+}
+
+/* Download button — keep gold CTA, just ensure text legibility */
+#pricelist button[onclick="downloadPriceList()"] {
+    background-color: #D4AF37 !important;
+    color: #1A1513 !important;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.30) !important;
+}
+#pricelist button[onclick="downloadPriceList()"]:hover {
+    background-color: #C9A200 !important;
+}
+
+/* ── Price cards — white lift off blush surface ── */
+#price-list-content > div {
+    background: #FFFFFF !important;
+    border-color: rgba(212, 175, 55, 0.20) !important;
+    box-shadow:
+        0 20px 40px rgba(26, 21, 19, 0.18),
+        0 8px 16px rgba(26, 21, 19, 0.10) !important;
+}
+#price-list-content > div:hover {
+    border-color: rgba(212, 175, 55, 0.40) !important;
+    box-shadow:
+        0 28px 56px rgba(26, 21, 19, 0.22),
+        0 12px 24px rgba(26, 21, 19, 0.12) !important;
+}
+
+/* Card icon badge */
+#price-list-content > div .rounded-xl.bg-nb-gold\/15,
+#price-list-content > div .w-10.h-10.rounded-xl {
+    background: rgba(212, 175, 55, 0.12) !important;
+    border-color: rgba(212, 175, 55, 0.28) !important;
+}
+#price-list-content > div .w-10.h-10 i {
+    color: #D4AF37 !important;
+}
+
+/* Card category headings (h4) */
+#price-list-content > div h4.font-display {
+    color: #D4AF37 !important;
+}
+
+/* Row dividers */
+#price-list-content > div .border-b {
+    border-color: rgba(212, 175, 55, 0.14) !important;
+}
+
+/* Row label text */
+#price-list-content > div .text-nb-cream\/80,
+#price-list-content > div span.text-nb-cream\/80 {
+    color: #6E5D4F !important;
+}
+
+/* Price figures — gold */
+#price-list-content > div .font-display.text-xl.text-white,
+#price-list-content > div .font-display.text-lg.text-white,
+#price-list-content > div .font-display.text-2xl,
+#price-list-content > div span.font-display {
+    color: #D4AF37 !important;
+}
+
+/* Row hover tint — soft blush instead of dark gold */
+#price-list-content > div .hover\:bg-nb-gold\/5:hover {
+    background: rgba(242, 217, 213, 0.30) !important;
+}
+
+/* ── IV Therapy card — special premium card ── */
+#price-list-content > div .absolute.-right-6.-top-6 {
+    background: rgba(212, 175, 55, 0.12) !important;
+}
+#price-list-content > div p.text-xs.text-nb-cream\/50 {
+    color: #6E5D4F !important;
+}
+#price-list-content > div .text-white.font-medium {
+    color: #1A1513 !important;
+}
+#price-list-content > div p.text-xs.text-nb-cream\/50.mt-0\.5 {
+    color: #9A8878 !important;
+}
+
+/* IV Therapy info note at bottom of card */
+#price-list-content > div .flex.items-center.gap-2.text-nb-cream\/50 {
+    color: #9A8878 !important;
+}
+#price-list-content > div .border-t.border-nb-gold\/15 {
+    border-color: rgba(212, 175, 55, 0.18) !important;
+}
+
+/* ── Kids card grid cells ── */
+#price-list-content > div .bg-nb-gold\/5 {
+    background: rgba(212, 175, 55, 0.07) !important;
+    border-color: rgba(212, 175, 55, 0.18) !important;
+}
+#price-list-content > div .bg-nb-gold\/5 p.text-nb-cream\/80 {
+    color: #6E5D4F !important;
+}
+#price-list-content > div .bg-nb-gold\/5 span.font-display {
+    color: #D4AF37 !important;
+}
+
+/* ── Manicure combo highlight row ── */
+#price-list-content > div .bg-nb-gold\/10.rounded-lg {
+    background: rgba(212, 175, 55, 0.12) !important;
+}
+#price-list-content > div .text-nb-gold {
+    color: #D4AF37 !important;
+}
+
+/* Sub-category labels (e.g., "Hands (Manicure)") */
+#price-list-content > div .text-nb-cream\/50 {
+    color: #9A8878 !important;
+}
+
+/* ── Section footer note — complimentary drinks ── */
+#pricelist .mt-16 .bg-nb-gold\/10 {
+    background: rgba(212, 175, 55, 0.10) !important;
+    border-color: rgba(212, 175, 55, 0.22) !important;
+}
+#pricelist .mt-16 .text-nb-cream\/60 {
+    color: #6E5D4F !important;
+}
+#pricelist .mt-16 .text-nb-gold\/60 {
+    color: #D4AF37 !important;
+}
+
+
+/* ================================================================
+   §2  THE EXPERIENCE SECTION — #experience
+       Replace dark mesh-dark with silk cream surface
+================================================================ */
+
+/* Section background */
+#experience {
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(242, 217, 213, 0.30) 0%, transparent 52%),
+        radial-gradient(ellipse at 85% 80%, rgba(212, 175, 55, 0.10) 0%, transparent 52%),
+        #FAF6F0 !important;
+}
+
+/* Kill dark blob pseudo-overlays */
+#experience > .absolute.top-20.left-10 {
+    background: rgba(212, 175, 55, 0.10) !important;
+}
+#experience > .absolute.bottom-20.right-10 {
+    background: rgba(242, 217, 213, 0.20) !important;
+}
+
+/* Section titles & script headings */
+#experience .font-script,
+#experience p.font-script {
+    color: #D4AF37 !important;  /* gold script — "The Experience" */
+}
+#experience h3.font-display {
+    color: #1A1513 !important;
+}
+#experience .w-20.h-px {
+    background: linear-gradient(to right, #D4AF37, transparent) !important;
+}
+
+/* Body copy paragraphs */
+#experience .text-nb-cream\/70 {
+    color: #6E5D4F !important;
+}
+
+/* ── Feature check cards (Precision Lace, Bleached Knots, etc.) ── */
+#experience .glass-card-dark {
+    background: #FFFFFF !important;
+    border-color: rgba(212, 175, 55, 0.18) !important;
+    box-shadow:
+        0 20px 40px rgba(26, 21, 19, 0.18),
+        0 8px 16px rgba(26, 21, 19, 0.10) !important;
+}
+#experience .glass-card-dark:hover {
+    background: #FAF6F0 !important;
+    border-color: rgba(212, 175, 55, 0.38) !important;
+    box-shadow:
+        0 28px 56px rgba(26, 21, 19, 0.20),
+        0 10px 20px rgba(26, 21, 19, 0.10) !important;
+}
+
+/* Feature card icon circle */
+#experience .glass-card-dark .w-10.h-10.rounded-full {
+    background: rgba(212, 175, 55, 0.14) !important;
+}
+#experience .glass-card-dark .w-10.h-10 i {
+    color: #D4AF37 !important;
+}
+
+/* Feature card title text */
+#experience .glass-card-dark .text-white.text-sm.font-medium {
+    color: #1A1513 !important;
+}
+
+/* Feature card subtitle */
+#experience .glass-card-dark .text-nb-gold\/50 {
+    color: #D4AF37 !important;
+    opacity: 0.75;
+}
+
+/* ── Video panel ── */
+/* Border frame around the video — lighten to gold */
+#experience .border.border-nb-gold\/20 {
+    border-color: rgba(212, 175, 55, 0.28) !important;
+}
+/* Decorative corner squares */
+#experience .border.border-nb-gold\/20.rounded-2xl,
+#experience .border.border-nb-gold\/20.rounded-full {
+    border-color: rgba(212, 175, 55, 0.22) !important;
+}
+/* Live badge pill */
+#experience .glass-dark {
+    background: rgba(250, 246, 240, 0.90) !important;
+    border-color: rgba(212, 175, 55, 0.28) !important;
+}
+#experience .glass-dark .text-white\/80 {
+    color: #6E5D4F !important;
+}
+#experience .glass-dark .bg-red-500 {
+    background-color: #D4AF37 !important; /* gold pulse dot — matches brand */
+}
+/* "The Art of Installation" label */
+#experience .font-display.text-2xl.text-white {
+    color: #1A1513 !important;
+}
+/* Video gradient overlay — lighten so it fades to cream not black */
+#experience .bg-gradient-to-t.from-black\/60 {
+    background: linear-gradient(to top, rgba(250, 246, 240, 0.85), transparent) !important;
+}
+
+
+/* ================================================================
+   §3  THE SPACE / WORKSPACE SECTION — #workspace
+       Already uses mesh-white — reinforce with blush surface
+       and apply branded card shadows on image tiles
+================================================================ */
+
+/* Section background — blush pink surface */
+#workspace {
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(242, 217, 213, 0.38) 0%, transparent 52%),
+        radial-gradient(ellipse at 80% 85%, rgba(212, 175, 55, 0.10) 0%, transparent 52%),
+        #FDF1ED !important;
+}
+
+/* Kill pseudo-overlay absolutes */
+#workspace > .absolute.top-0.right-0 {
+    background: linear-gradient(to left, rgba(242, 217, 213, 0.30), transparent) !important;
+}
+#workspace > .absolute.top-20.left-10 {
+    background: rgba(212, 175, 55, 0.10) !important;
+}
+#workspace > .absolute.bottom-20.right-10 {
+    background: rgba(242, 217, 213, 0.22) !important;
+}
+
+/* Section header */
+#workspace .font-script,
+#workspace p.font-script {
+    color: #1A1513 !important;
+}
+#workspace h3.font-display {
+    color: #D4AF37 !important;
+}
+#workspace .via-nb-gold {
+    --tw-gradient-stops: transparent, #D4AF37, transparent !important;
+}
+#workspace p.text-nb-stone {
+    color: #6E5D4F !important;
+}
+
+/* ── Image tile hover overlays ── */
+/* Replace dark bg-gradient-to-t from-nb-dark/60 with cream-to-transparent */
+#workspace .group .bg-gradient-to-t {
+    background: linear-gradient(to top, rgba(26, 21, 19, 0.55), transparent) !important;
+}
+
+/* Tile caption text — keep white over darkened image gradient */
+#workspace .group .font-display.text-lg {
+    color: #FAF6F0 !important;
+}
+#workspace .group p.text-white\/70 {
+    color: rgba(250, 246, 240, 0.80) !important;
+}
+
+/* ── Inset border ring on tiles — gold ── */
+#workspace .group::after {
+    box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.18) !important;
+}
+#workspace .group:hover::after {
+    box-shadow: inset 0 0 0 2px rgba(212, 175, 55, 0.38) !important;
+}
+
+/* Deep architectural shadow on every image tile */
+#workspace .group.img-zoom {
+    box-shadow:
+        0 20px 40px rgba(26, 21, 19, 0.18),
+        0 8px 16px rgba(26, 21, 19, 0.10) !important;
+}
+#workspace .group.img-zoom:hover {
+    box-shadow:
+        0 28px 56px rgba(26, 21, 19, 0.22),
+        0 12px 24px rgba(26, 21, 19, 0.12) !important;
+}
+
+/* ================================================================
+   END OF TARGETED OVERRIDE BLOCK
+================================================================ */
+
+/* ================================================================
+   ╔══════════════════════════════════════════════════════════════╗
+   ║   SITE-WIDE BRAND CONSISTENCY PASS                          ║
+   ║   Coverage: Hero → Footer (all sections)                    ║
+   ║                                                             ║
+   ║   Rules applied:                                            ║
+   ║   • font-script headings        → #d0aa73 (logo gold)      ║
+   ║   • All cards                   → #f1d9d3 bg + 3D shadow   ║
+   ║   • Buttons                     → balanced per bg context  ║
+   ║   • Body / label text           → #5c3d2e (warm stone)     ║
+   ║   • Section titles (display)    → #3a2318 (deep warm)      ║
+   ║   • Gold accents / prices       → #d0aa73                  ║
+   ║   NO layout, dimension, or      position properties        ║
+   ╚══════════════════════════════════════════════════════════════╝
+================================================================ */
+
+/* ================================================================
+   §0  CSS CUSTOM PROPERTIES — single source of truth
+================================================================ */
+:root {
+    --bb-logo-gold:    #d0aa73;   /* exact logo bronze-gold               */
+    --bb-logo-gold-dk: #a8813f;   /* darker shade for hover               */
+    --bb-card-blush:   #f1d9d3;   /* card surface blush                   */
+    --bb-card-blush-h: #eacfc8;   /* card hover surface                   */
+    --bb-body-text:    #5c3d2e;   /* warm stone — all body copy           */
+    --bb-title-text:   #3a2318;   /* deep warm brown — display headings   */
+    --bb-cream-bg:     #faf6f0;   /* section backgrounds — light sections */
+    --bb-blush-bg:     #fdf1ed;   /* section backgrounds — blush sections */
+    --bb-shadow-a: rgba(60, 30, 15, 0.20);   /* shadow layer 1            */
+    --bb-shadow-b: rgba(60, 30, 15, 0.12);   /* shadow layer 2            */
+    --bb-shadow-c: rgba(60, 30, 15, 0.06);   /* shadow layer 3 (ambient)  */
+    --bb-3d-shadow:
+        0 2px 2px var(--bb-shadow-c),
+        0 6px 10px var(--bb-shadow-b),
+        0 20px 40px var(--bb-shadow-a);
+    --bb-3d-shadow-hover:
+        0 4px 4px var(--bb-shadow-c),
+        0 10px 18px var(--bb-shadow-b),
+        0 32px 56px var(--bb-shadow-a);
+}
+
+/* ================================================================
+   §1  GLOBAL — font-script (italic script headings)
+       Every instance of .font-script across the site → logo gold
+================================================================ */
+.font-script {
+    color: var(--bb-logo-gold) !important;
+}
+
+/* Overrides for places where inline Tailwind forces text colour */
+.font-script.text-nb-black,
+.font-script.text-white,
+.font-script.gradient-text-light,
+.font-script.gradient-text,
+[class*="font-script"] {
+    color: var(--bb-logo-gold) !important;
+    -webkit-text-fill-color: var(--bb-logo-gold) !important; /* kills gradient-text */
+    background: none !important;                              /* kills gradient-text */
+}
+
+/* ================================================================
+   §2  GLOBAL — CARD SURFACE (#f1d9d3) + 3D SHADOW
+       Targets every card variant used across all sections
+================================================================ */
+
+/* Glass cards (About, Contact hours, booking form, hero badge) */
+.glass-card {
+    background: var(--bb-card-blush) !important;
+    border-color: rgba(208, 170, 115, 0.28) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+.glass-card:hover {
+    background: var(--bb-card-blush-h) !important;
+    border-color: rgba(208, 170, 115, 0.50) !important;
+    box-shadow: var(--bb-3d-shadow-hover) !important;
+}
+
+/* Glass (generic — used for About feature cards, hours table, booking form) */
+.glass {
+    background: rgba(241, 217, 211, 0.70) !important;
+    border-color: rgba(208, 170, 115, 0.22) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+
+/* Glass-dark cards (Experience feature cards) → flip to blush */
+.glass-card-dark {
+    background: var(--bb-card-blush) !important;
+    border-color: rgba(208, 170, 115, 0.26) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+.glass-card-dark:hover {
+    background: var(--bb-card-blush-h) !important;
+    border-color: rgba(208, 170, 115, 0.48) !important;
+    box-shadow: var(--bb-3d-shadow-hover) !important;
+}
+
+/* Price list cards (bg-nb-dark rounded-3xl) */
+#price-list-content > div {
+    background: var(--bb-card-blush) !important;
+    border-color: rgba(208, 170, 115, 0.24) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+#price-list-content > div:hover {
+    background: var(--bb-card-blush-h) !important;
+    border-color: rgba(208, 170, 115, 0.46) !important;
+    box-shadow: var(--bb-3d-shadow-hover) !important;
+}
+
+/* Team portrait cards */
+#team .group .relative.aspect-\[3\/4\].rounded-3xl {
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+#team .group:hover .relative.aspect-\[3\/4\].rounded-3xl {
+    box-shadow: var(--bb-3d-shadow-hover) !important;
+}
+
+/* Workspace image tiles */
+#workspace .group.img-zoom,
+#workspace .group.reveal-text.img-zoom {
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+#workspace .group.img-zoom:hover {
+    box-shadow: var(--bb-3d-shadow-hover) !important;
+}
+
+/* About section — Premium Care badge card */
+#about .glass.rounded-2xl {
+    background: rgba(241, 217, 211, 0.88) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+
+/* Gradient decorative background — kill nb-warm and nb-charcoal rounds */
+#about .absolute.-z-10.-top-8.-left-8 {
+    background: linear-gradient(135deg, #f1d9d3 0%, rgba(208,170,115,0.25) 100%) !important;
+}
+
+/* ================================================================
+   §3  HERO SECTION
+================================================================ */
+
+/* "Now Accepting Bookings" badge — glass pill */
+#hero-badge .glass {
+    background: rgba(241, 217, 211, 0.60) !important;
+    border-color: rgba(208, 170, 115, 0.30) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+/* Green pulse dot → logo gold */
+#hero-badge .bg-green-500 {
+    background-color: var(--bb-logo-gold) !important;
+}
+
+/* "Welcome" script heading */
+#hero-welcome {
+    color: var(--bb-logo-gold) !important;
+}
+
+/* "Nature's Beauty Corner" display heading */
+#hero-title {
+    color: var(--bb-title-text) !important;
+}
+
+/* Tagline italic */
+#hero-tagline {
+    color: var(--bb-body-text) !important;
+}
+
+/* Hero CTA 1 — "Explore Services" (gold bg, dark text) */
+#hero-cta a:first-child {
+    background-color: var(--bb-logo-gold) !important;
+    color: #3a2318 !important;
+    border: none !important;
+    box-shadow: 0 6px 20px rgba(208, 170, 115, 0.40) !important;
+}
+#hero-cta a:first-child:hover {
+    background-color: var(--bb-logo-gold-dk) !important;
+    box-shadow: 0 8px 28px rgba(208, 170, 115, 0.55) !important;
+}
+
+/* Hero CTA 2 — "Book Appointment" (blush glass, dark text) */
+#hero-cta a:last-child {
+    background: rgba(241, 217, 211, 0.55) !important;
+    border-color: rgba(208, 170, 115, 0.35) !important;
+    color: var(--bb-title-text) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+#hero-cta a:last-child:hover {
+    background: rgba(241, 217, 211, 0.85) !important;
+    border-color: rgba(208, 170, 115, 0.55) !important;
+}
+
+/* ================================================================
+   §4  ABOUT SECTION
+================================================================ */
+#about {
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(241,217,211,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(208,170,115,0.12) 0%, transparent 55%),
+        #faf6f0 !important;
+}
+#about .absolute.top-0.right-0 {
+    background: linear-gradient(to left, rgba(241,217,211,0.38), transparent) !important;
+}
+
+/* "Our Story" already handled by §1 .font-script */
+/* "Crafted with Passion" display heading */
+#about h3.font-display {
+    color: var(--bb-title-text) !important;
+}
+/* Gold divider line */
+#about .w-20.h-px {
+    background: linear-gradient(to right, var(--bb-logo-gold), transparent) !important;
+}
+/* Body paragraphs */
+#about p.text-nb-stone {
+    color: var(--bb-body-text) !important;
+}
+
+/* Feature cards — 4 glass.rounded-xl cards */
+#about .glass.rounded-xl {
+    background: var(--bb-card-blush) !important;
+    border-color: rgba(208, 170, 115, 0.26) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+#about .glass.rounded-xl:hover {
+    background: var(--bb-card-blush-h) !important;
+    border-color: rgba(208, 170, 115, 0.46) !important;
+    box-shadow: var(--bb-3d-shadow-hover) !important;
+}
+/* Feature card icon */
+#about .glass.rounded-xl i {
+    color: var(--bb-logo-gold) !important;
+}
+/* Feature card label */
+#about .glass.rounded-xl p.font-medium {
+    color: var(--bb-title-text) !important;
+}
+/* Feature card subtitle */
+#about .glass.rounded-xl p.text-xs {
+    color: var(--bb-body-text) !important;
+}
+
+/* "Premium Care" badge card */
+#about .glass.rounded-2xl p.font-display {
+    color: var(--bb-title-text) !important;
+}
+#about .glass.rounded-2xl p.text-xs {
+    color: var(--bb-body-text) !important;
+}
+/* Crown icon circle */
+#about .w-12.h-12.rounded-full.bg-nb-gold {
+    background-color: var(--bb-logo-gold) !important;
+}
+
+/* ================================================================
+   §5  TEAM SECTION
+================================================================ */
+#team {
+    background:
+        radial-gradient(ellipse at 10% 10%, rgba(241,217,211,0.40) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 90%, rgba(208,170,115,0.10) 0%, transparent 50%),
+        #fdf1ed !important;
+}
+/* Kill existing radial overlays */
+#team > .absolute:first-of-type {
+    background: radial-gradient(ellipse at top left, rgba(241,217,211,0.35) 0%, transparent 50%) !important;
+}
+#team > .absolute.bottom-0 {
+    background: rgba(241, 217, 211, 0.20) !important;
+}
+
+/* "The Artists" — §1 font-script handles this */
+/* "Meet The Team" */
+#team h3.font-display {
+    color: var(--bb-title-text) !important;
+}
+/* Gold divider */
+#team .via-nb-gold {
+    --tw-gradient-stops: transparent, var(--bb-logo-gold), transparent !important;
+}
+#team p.text-nb-stone {
+    color: var(--bb-body-text) !important;
+}
+
+/* Team member name */
+#team h4.font-display {
+    color: var(--bb-title-text) !important;
+}
+/* Team member role */
+#team p.text-nb-stone.text-sm {
+    color: var(--bb-body-text) !important;
+}
+/* Name underline rule */
+#team .w-12.h-px.bg-nb-gold {
+    background-color: var(--bb-logo-gold) !important;
+}
+
+/* Social icon pills on hover */
+#team .w-9.h-9 {
+    background: rgba(241, 217, 211, 0.35) !important;
+    border-color: rgba(208, 170, 115, 0.35) !important;
+}
+#team .w-9.h-9:hover {
+    background-color: var(--bb-logo-gold) !important;
+    color: #3a2318 !important;
+}
+
+/* ================================================================
+   §6  PRICE LIST SECTION
+   (Supplements targeted override from §PRICE-LIST above)
+================================================================ */
+#pricelist {
+    background:
+        radial-gradient(ellipse at 15% 10%, rgba(241,217,211,0.50) 0%, transparent 52%),
+        radial-gradient(ellipse at 85% 90%, rgba(208,170,115,0.12) 0%, transparent 52%),
+        #fdf1ed !important;
+}
+
+/* "Price List" script — handled by §1 */
+/* Section subtitle */
+#pricelist p.text-nb-cream\/60 {
+    color: var(--bb-body-text) !important;
+}
+
+/* Download button — gold on blush bg */
+#pricelist button[onclick="downloadPriceList()"] {
+    background-color: var(--bb-logo-gold) !important;
+    color: #3a2318 !important;
+    box-shadow: 0 6px 20px rgba(208,170,115,0.38), var(--bb-3d-shadow) !important;
+}
+#pricelist button[onclick="downloadPriceList()"]:hover {
+    background-color: var(--bb-logo-gold-dk) !important;
+    box-shadow: 0 8px 28px rgba(208,170,115,0.55), var(--bb-3d-shadow-hover) !important;
+}
+
+/* Card icon badge */
+#price-list-content > div .w-10.h-10.rounded-xl {
+    background: rgba(208, 170, 115, 0.14) !important;
+    border-color: rgba(208, 170, 115, 0.30) !important;
+}
+#price-list-content > div .w-10.h-10 i {
+    color: var(--bb-logo-gold) !important;
+}
+
+/* Card category heading */
+#price-list-content > div h4.font-display {
+    color: var(--bb-title-text) !important;
+}
+
+/* Row dividers */
+#price-list-content > div .border-b {
+    border-color: rgba(208, 170, 115, 0.18) !important;
+}
+
+/* Row label text */
+#price-list-content > div .text-nb-cream\/80,
+#price-list-content > div span.text-nb-cream\/80 {
+    color: var(--bb-body-text) !important;
+}
+
+/* Price figures */
+#price-list-content > div .font-display.text-xl.text-white,
+#price-list-content > div .font-display.text-lg.text-white,
+#price-list-content > div .font-display.text-2xl,
+#price-list-content > div span.font-display,
+#price-list-content > div .text-nb-gold {
+    color: var(--bb-logo-gold) !important;
+}
+
+/* Row hover — blush tint */
+#price-list-content > div .hover\:bg-nb-gold\/5:hover {
+    background: rgba(208, 170, 115, 0.12) !important;
+}
+
+/* Sub-labels ("Hands (Manicure)") */
+#price-list-content > div .text-nb-cream\/50,
+#price-list-content > div p.text-xs.text-nb-cream\/50 {
+    color: var(--bb-body-text) !important;
+    opacity: 0.75;
+}
+
+/* Combo highlight row */
+#price-list-content > div .bg-nb-gold\/10.rounded-lg {
+    background: rgba(208, 170, 115, 0.16) !important;
+}
+
+/* IV Therapy card body text */
+#price-list-content > div .text-white.font-medium {
+    color: var(--bb-title-text) !important;
+}
+#price-list-content > div p.text-xs {
+    color: var(--bb-body-text) !important;
+}
+
+/* Kids grid cells */
+#price-list-content > div .bg-nb-gold\/5 {
+    background: rgba(208, 170, 115, 0.10) !important;
+    border-color: rgba(208, 170, 115, 0.22) !important;
+}
+#price-list-content > div .bg-nb-gold\/5 p {
+    color: var(--bb-body-text) !important;
+}
+#price-list-content > div .bg-nb-gold\/5 span.font-display {
+    color: var(--bb-logo-gold) !important;
+}
+
+/* Bottom note */
+#pricelist .mt-16 .bg-nb-gold\/10 {
+    background: rgba(208, 170, 115, 0.14) !important;
+    border-color: rgba(208, 170, 115, 0.26) !important;
+}
+#pricelist .mt-16 .text-nb-cream\/60 {
+    color: var(--bb-body-text) !important;
+}
+
+/* ================================================================
+   §7  EXPERIENCE SECTION
+================================================================ */
+#experience {
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(241,217,211,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 80%, rgba(208,170,115,0.12) 0%, transparent 55%),
+        #faf6f0 !important;
+}
+
+/* "The Experience" script — §1 handles it */
+/* "Behind Every Install" */
+#experience h3.font-display {
+    color: var(--bb-title-text) !important;
+}
+#experience .w-20.h-px {
+    background: linear-gradient(to right, var(--bb-logo-gold), transparent) !important;
+}
+/* Body paragraphs */
+#experience .text-nb-cream\/70 {
+    color: var(--bb-body-text) !important;
+}
+
+/* Feature cards — glass-card-dark already covered in §2 */
+/* Icon circle */
+#experience .glass-card-dark .w-10.h-10.rounded-full {
+    background: rgba(208, 170, 115, 0.16) !important;
+}
+#experience .glass-card-dark i {
+    color: var(--bb-logo-gold) !important;
+}
+/* Card title */
+#experience .glass-card-dark .text-white.text-sm.font-medium,
+#experience .glass-card-dark p.font-medium {
+    color: var(--bb-title-text) !important;
+}
+/* Card subtitle */
+#experience .glass-card-dark .text-nb-gold\/50,
+#experience .glass-card-dark p.text-xs {
+    color: var(--bb-body-text) !important;
+    opacity: 0.80;
+}
+
+/* Video panel border */
+#experience .border.border-nb-gold\/20 {
+    border-color: rgba(208, 170, 115, 0.30) !important;
+}
+/* "Live Process" badge */
+#experience .glass-dark {
+    background: rgba(241, 217, 211, 0.88) !important;
+    border-color: rgba(208, 170, 115, 0.30) !important;
+}
+#experience .glass-dark .text-white\/80 {
+    color: var(--bb-body-text) !important;
+}
+#experience .glass-dark .bg-red-500 {
+    background-color: var(--bb-logo-gold) !important;
+}
+/* "The Art of Installation" label */
+#experience .font-display.text-2xl.text-white {
+    color: var(--bb-title-text) !important;
+}
+/* Video bottom gradient — fade to cream */
+#experience .bg-gradient-to-t.from-black\/60 {
+    background: linear-gradient(to top, rgba(250,246,240,0.90), transparent) !important;
+}
+/* Corner decorative borders */
+#experience .border.border-nb-gold\/20.rounded-2xl,
+#experience .border.border-nb-gold\/20.rounded-full {
+    border-color: rgba(208, 170, 115, 0.26) !important;
+}
+
+/* ================================================================
+   §8  GALLERY SECTION
+================================================================ */
+#gallery {
+    background:
+        radial-gradient(ellipse at 20% 10%, rgba(241,217,211,0.32) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(208,170,115,0.10) 0%, transparent 55%),
+        #fdf1ed !important;
+}
+
+/* "Portfolio" script — §1 */
+/* "Transformations" heading */
+#gallery h3.font-display {
+    color: var(--bb-title-text) !important;
+}
+#gallery .via-nb-gold {
+    --tw-gradient-stops: transparent, var(--bb-logo-gold), transparent !important;
+}
+#gallery p.text-nb-stone {
+    color: var(--bb-body-text) !important;
+}
+
+/* Image tiles — 3D shadow ring */
+#gallery .img-zoom.rounded-2xl {
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+#gallery .img-zoom.rounded-2xl:hover {
+    box-shadow: var(--bb-3d-shadow-hover) !important;
+}
+
+/* ================================================================
+   §9  WORKSPACE / THE SPACE SECTION
+================================================================ */
+#workspace {
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(241,217,211,0.42) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 85%, rgba(208,170,115,0.12) 0%, transparent 55%),
+        #fdf1ed !important;
+}
+#workspace > .absolute.top-0.right-0 {
+    background: linear-gradient(to left, rgba(241,217,211,0.35), transparent) !important;
+}
+
+/* "The Space" script — §1 */
+/* "Our Workspace" heading */
+#workspace h3.font-display {
+    color: var(--bb-title-text) !important;
+}
+#workspace .via-nb-gold {
+    --tw-gradient-stops: transparent, var(--bb-logo-gold), transparent !important;
+}
+#workspace p.text-nb-stone {
+    color: var(--bb-body-text) !important;
+}
+
+/* Image tile captions (on hover overlay) */
+#workspace .group .font-display.text-lg {
+    color: #faf6f0 !important;
+}
+#workspace .group p.text-white\/70 {
+    color: rgba(250,246,240,0.82) !important;
+}
+/* Overlay gradient — warm cream fade */
+#workspace .group .bg-gradient-to-t {
+    background: linear-gradient(to top, rgba(58,35,24,0.62), transparent) !important;
+}
+
+/* ================================================================
+   §10  CONTACT & HOURS SECTION
+================================================================ */
+#contact {
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(241,217,211,0.36) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(208,170,115,0.10) 0%, transparent 55%),
+        #faf6f0 !important;
+}
+#contact > .absolute.top-0.right-0 {
+    background: linear-gradient(to left, rgba(241,217,211,0.32), transparent) !important;
+}
+
+/* "Visit Us" + "Connect" scripts — §1 */
+/* Display headings */
+#contact h3.font-display {
+    color: var(--bb-title-text) !important;
+}
+#contact .w-20.h-px {
+    background: linear-gradient(to right, var(--bb-logo-gold), transparent) !important;
+}
+
+/* Hours table */
+#contact .glass.rounded-2xl {
+    background: var(--bb-card-blush) !important;
+    border-color: rgba(208, 170, 115, 0.24) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+/* Day name */
+#contact .day-slot span.text-nb-stone {
+    color: var(--bb-body-text) !important;
+}
+/* Hours value */
+#contact .day-slot span.font-display {
+    color: var(--bb-title-text) !important;
+}
+/* Sunday — closed, muted */
+#contact .day-slot span.text-nb-stone\/50,
+#contact .day-slot span.font-display.text-nb-stone\/50 {
+    color: rgba(92, 61, 46, 0.40) !important;
+}
+/* Closed Sunday row — slightly different bg */
+#contact .bg-nb-gold\/10 {
+    background: rgba(208, 170, 115, 0.10) !important;
+}
+/* Row hover */
+.day-slot:hover {
+    background: rgba(241, 217, 211, 0.35) !important;
+}
+
+/* Phone + email contact tiles */
+#contact .glass.rounded-xl {
+    background: var(--bb-card-blush) !important;
+    border-color: rgba(208, 170, 115, 0.24) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+#contact .glass.rounded-xl:hover {
+    background: var(--bb-card-blush-h) !important;
+    box-shadow: var(--bb-3d-shadow-hover) !important;
+}
+/* Phone icon circle */
+#contact .w-12.h-12.rounded-full.bg-nb-gold {
+    background-color: var(--bb-logo-gold) !important;
+}
+/* Email icon circle */
+#contact .w-12.h-12.rounded-full.bg-nb-gold\/10 {
+    background: rgba(208, 170, 115, 0.16) !important;
+}
+#contact .w-12.h-12 i {
+    color: #3a2318 !important;
+}
+/* Label text */
+#contact p.text-xs.text-nb-stone {
+    color: var(--bb-body-text) !important;
+    opacity: 0.75;
+}
+#contact p.font-medium,
+#contact p.text-sm.font-medium,
+#contact p.text-nb-black.font-medium {
+    color: var(--bb-title-text) !important;
+}
+
+/* Booking form */
+#contact .glass.rounded-3xl {
+    background: var(--bb-card-blush) !important;
+    border-color: rgba(208, 170, 115, 0.22) !important;
+    box-shadow: var(--bb-3d-shadow) !important;
+}
+/* Form labels */
+#contact label {
+    color: var(--bb-body-text) !important;
+}
+/* Input fields */
+#contact .input-glass {
+    background: rgba(255, 255, 255, 0.70) !important;
+    border-color: rgba(208, 170, 115, 0.22) !important;
+    color: var(--bb-title-text) !important;
+}
+#contact .input-glass:focus {
+    background: #ffffff !important;
+    border-color: rgba(208, 170, 115, 0.55) !important;
+    box-shadow: 0 0 0 3px rgba(241, 217, 211, 0.50) !important;
+}
+/* Send Booking Request button — gold on blush form */
+#booking-submit {
+    background-color: var(--bb-logo-gold) !important;
+    color: #3a2318 !important;
+    box-shadow: 0 6px 20px rgba(208,170,115,0.38), var(--bb-3d-shadow) !important;
+}
+#booking-submit:hover {
+    background-color: var(--bb-logo-gold-dk) !important;
+    box-shadow: 0 8px 28px rgba(208,170,115,0.55), var(--bb-3d-shadow-hover) !important;
+}
+
+/* ================================================================
+   §11  FOOTER
+================================================================ */
+footer {
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(208,170,115,0.10) 0%, transparent 55%),
+        #2c1a10 !important;
+}
+/* Logo tagline */
+footer p.text-nb-cream\/70 {
+    color: rgba(241, 217, 211, 0.75) !important;
+}
+/* Column headings */
+footer h4.font-display {
+    color: var(--bb-logo-gold) !important;
+}
+/* Column links — resting */
+footer a.text-nb-cream\/70 {
+    color: rgba(241, 217, 211, 0.65) !important;
+}
+/* Column links — hover → logo gold */
+footer a.hover\:text-nb-gold:hover,
+footer a:hover {
+    color: var(--bb-logo-gold) !important;
+}
+/* Address + phone labels */
+footer p.text-xs.text-nb-stone {
+    color: rgba(208, 170, 115, 0.55) !important;
+}
+footer a.text-nb-cream\/70.text-sm {
+    color: rgba(241, 217, 211, 0.65) !important;
+}
+/* Social icon circles */
+footer .w-10.h-10.rounded-full {
+    border-color: rgba(208, 170, 115, 0.22) !important;
+    color: rgba(208, 170, 115, 0.55) !important;
+}
+footer .w-10.h-10.rounded-full:hover {
+    border-color: rgba(208, 170, 115, 0.50) !important;
+    color: var(--bb-logo-gold) !important;
+}
+/* Copyright line */
+footer .text-nb-gold\/30 {
+    color: rgba(208, 170, 115, 0.35) !important;
+}
+footer .text-nb-gold\/50 {
+    color: rgba(208, 170, 115, 0.55) !important;
+}
+footer .text-nb-cream\/70.hover\:text-nb-gold {
+    color: rgba(241, 217, 211, 0.60) !important;
+}
+footer .text-nb-cream\/70.hover\:text-nb-gold:hover {
+    color: var(--bb-logo-gold) !important;
+}
+/* Top blur glow */
+footer .bg-nb-charcoal.rounded-full {
+    background: rgba(208, 170, 115, 0.06) !important;
+}
+
+/* ================================================================
+   §12  PRICE LIST MODAL (Print/Download overlay)
+================================================================ */
+#price-list-modal > div:last-child {
+    background: var(--bb-card-blush) !important;
+}
+/* Modal inner wrapper */
+#price-list-modal .bg-nb-cream {
+    background: #faf6f0 !important;
+}
+/* Modal title */
+#price-list-modal h2.font-display {
+    color: var(--bb-title-text) !important;
+}
+#price-list-modal p.text-nb-stone {
+    color: var(--bb-body-text) !important;
+}
+/* Section headings in modal */
+#price-list-modal h3.font-display {
+    color: var(--bb-logo-gold) !important;
+    border-color: rgba(208, 170, 115, 0.30) !important;
+}
+/* Sub-category labels */
+#price-list-modal p.font-semibold {
+    color: var(--bb-title-text) !important;
+}
+/* Row labels */
+#price-list-modal span.text-nb-stone {
+    color: var(--bb-body-text) !important;
+}
+/* Price figures */
+#price-list-modal span.font-display {
+    color: var(--bb-logo-gold) !important;
+}
+/* Combo gold */
+#price-list-modal .text-nb-gold {
+    color: var(--bb-logo-gold) !important;
+}
+/* Notes */
+#price-list-modal .text-nb-stone\/60 {
+    color: rgba(92, 61, 46, 0.55) !important;
+}
+/* Print button */
+#price-list-modal button[onclick="window.print()"] {
+    background-color: var(--bb-logo-gold) !important;
+    color: #3a2318 !important;
+    box-shadow: 0 6px 20px rgba(208,170,115,0.38) !important;
+}
+#price-list-modal button[onclick="window.print()"]:hover {
+    background-color: var(--bb-logo-gold-dk) !important;
+}
+/* Close button */
+#price-list-modal button[onclick="closePriceList()"] {
+    border-color: rgba(208, 170, 115, 0.35) !important;
+    color: var(--bb-title-text) !important;
+}
+#price-list-modal button[onclick="closePriceList()"]:hover {
+    background: rgba(241, 217, 211, 0.40) !important;
+}
+/* X close icon button */
+#price-list-modal .absolute.top-6.right-6 {
+    background: rgba(241, 217, 211, 0.50) !important;
+    color: var(--bb-title-text) !important;
+}
+#price-list-modal .absolute.top-6.right-6:hover {
+    background: rgba(208, 170, 115, 0.30) !important;
+}
+
+/* ================================================================
+   §13  NAVBAR — consistent gold accents
+================================================================ */
+#navbar nav a {
+    color: var(--bb-body-text) !important;
+}
+#navbar nav a:hover {
+    color: var(--bb-title-text) !important;
+}
+/* Hover underline span */
+#navbar nav a span {
+    background-color: var(--bb-logo-gold) !important;
+}
+/* Mobile menu */
+#mobile-menu {
+    background: rgba(241, 217, 211, 0.92) !important;
+    border-color: rgba(208, 170, 115, 0.18) !important;
+}
+#mobile-menu a {
+    color: var(--bb-body-text) !important;
+}
+/* Mobile "Book Now" pill */
+#mobile-menu a[href="#contact"].border {
+    border-color: rgba(208, 170, 115, 0.45) !important;
+    color: var(--bb-title-text) !important;
+    background: rgba(208, 170, 115, 0.12) !important;
+}
+
+/* ================================================================
+   §14  GLOBAL UTILITY ALIGNMENTS — nb-* token corrections
+================================================================ */
+/* All nb-gold utility references → logo gold */
+.text-nb-gold  { color: var(--bb-logo-gold) !important; }
+.bg-nb-gold    { background-color: var(--bb-logo-gold) !important; }
+.border-nb-gold { border-color: rgba(208, 170, 115, 0.30) !important; }
+
+/* Gradient divider lines — via-nb-gold token */
+.via-nb-gold {
+    --tw-gradient-stops: transparent, var(--bb-logo-gold), transparent !important;
+}
+/* from-nb-gold */
+.from-nb-gold {
+    --tw-gradient-from: var(--bb-logo-gold) !important;
+}
+
+/* All text-white that are inside light sections should be dark */
+/* (scoped to prevent breaking footer / dark overlays) */
+#about .text-white,
+#team .text-white,
+#contact .text-white {
+    color: var(--bb-title-text) !important;
+}
+
+/* nb-stone override — ensure warm not grey */
+.text-nb-stone { color: var(--bb-body-text) !important; }
+.text-nb-black { color: var(--bb-title-text) !important; }
+
+/* ================================================================
+   END OF SITE-WIDE CONSISTENCY PASS
+================================================================ */

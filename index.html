@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature's Beauty Corner | Timeless Elegance, Naturally Yours</title>
+    <meta name="description" content="Premium wig installation, customization, and hair treatment services. Nature's Beauty Corner - Timeless Elegance, Naturally Yours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'nb-black': '#111111',
+                        'nb-dark': '#1C1610',
+                        'nb-grey': '#2C2416',
+                        'nb-charcoal': '#4A3C2E',
+                        'nb-stone': '#8B7355',
+                        'nb-light': '#C9A96E',
+                        'nb-white': '#FAF7F2',
+                        'nb-cream': '#FFFDF9',
+                        'nb-warm': '#F5E6D3',
+                        'nb-gold': '#C9A96E',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'display': ['Playfair Display', 'serif'],
+                        'script': ['Great Vibes', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+<base target="_blank">
+
+<style>
+/* ===== INFINITE GALLERY SCROLLER ===== */
+.gallery-scroller {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.gallery-track {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: max-content;
+    will-change: transform;
+}
+.gallery-track .img-zoom {
+    flex-shrink: 0;
+    width: 280px;
+    aspect-ratio: 3/4;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+/* Scroll animations — horizontal, opposite directions */
+@keyframes marquee-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.scroll-left {
+    animation: marquee-left 35s linear infinite;
+}
+.scroll-right {
+    animation: marquee-right 35s linear infinite;
+}
+
+/* Pause on hover */
+.gallery-scroller:hover .scroll-left,
+.gallery-scroller:hover .scroll-right {
+    animation-play-state: paused;
+}
+
+/* Responsive: smaller cards on mobile */
+@media (max-width: 640px) {
+    .gallery-track .img-zoom {
+        width: 180px;
+    }
+}
+</style>
+
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="Assets/Lond-2nd.webp" alt="Nature's Beauty Corner Logo" class="h-20 w-25 object-contain">
+                    <div class="hidden sm:block">
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#team" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
+                        Team
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#pricelist" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
+                        Price List
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#gallery" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
+                        Gallery
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#workspace" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
+                        Space
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-sm tracking-widest uppercase font-semibold text-nb-stone hover:text-nb-black transition-colors duration-300 relative group">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-nb-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+
+                <button id="mobile-btn" class="md:hidden text-nb-black p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full glass border-t border-nb-gold/10">
+            <div class="px-6 py-8 flex flex-col gap-6">
+                <a href="#about" class="text-sm tracking-widest uppercase text-nb-stone">About</a>
+                <a href="#team" class="text-sm tracking-widest uppercase text-nb-stone">Team</a>
+                <a href="#pricelist" class="text-sm tracking-widest uppercase text-nb-stone">Price List</a>
+                <a href="#gallery" class="text-sm tracking-widest uppercase text-nb-stone">Gallery</a>
+                <a href="#workspace" class="text-sm tracking-widest uppercase text-nb-stone">Workspace</a>
+                <a href="#experience" class="text-sm tracking-widest uppercase text-nb-stone">Experience</a>
+                <a href="#contact" class="text-sm tracking-widest uppercase text-nb-black border border-nb-black px-6 py-3 text-center rounded-full">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION WITH VIDEO BACKGROUND ===== -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+        <!-- Video Background -->
+        <div class="hero-video-container">
+            <iframe
+                src="https://www.youtube.com/embed/NQFY4tV1y6s?autoplay=1&mute=1&playsinline=1&loop=1&playlist=NQFY4tV1y6s&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&modestbranding=1"
+                title="The Art of Installation background video"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                aria-hidden="true"
+                tabindex="-1">
+            </iframe>
+        </div>
+
+        <!-- Gradient Overlay for text readability -->
+        <div class="hero-video-overlay"></div>
+
+        <!-- Floating Blobs behind content -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-nb-gold/20 to-nb-warm/30 rounded-full filter blur-3xl animate-blob z-[2]"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-nb-warm/30 to-nb-gold/20 rounded-full filter blur-3xl animate-blob-slow z-[2]"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center pt-20">
+            <div class="reveal-text" id="hero-badge">
+                <span class="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-xs tracking-widest uppercase text-nb-stone mb-8">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    Now Accepting Bookings
+                </span>
+            </div>
+
+            <h1 class="font-script text-7xl md:text-9xl lg:text-[10rem] text-nb-black mb-4 reveal-text drop-shadow-sm" id="hero-welcome">Welcome</h1>
+
+            <h2 class="font-display text-3xl md:text-5xl lg:text-6xl text-nb-black tracking-wider uppercase mb-6 reveal-text drop-shadow-sm" id="hero-title">
+                Bloom & Breeze
+            </h2>
+
+            <p class="font-serif italic text-xl md:text-2xl text-nb-stone mb-12 reveal-text" id="hero-tagline">
+                Timeless Elegance, Naturally Yours.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center reveal-text" id="hero-cta">
+                <a href="#services" class="btn-shine px-8 py-4 bg-nb-gold text-nb-dark text-sm tracking-widest uppercase font-medium rounded-full hover:bg-nb-light transition-all duration-300 shadow-lg shadow-black/20">
+                    Explore Services
+                </a>
+                <a href="#contact" class="px-8 py-4 glass text-nb-black text-sm tracking-widest uppercase font-medium rounded-full hover:bg-nb-cream/90 transition-all duration-300 border border-nb-gold/20">
+                    Book Appointment
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative py-24 lg:py-32 mesh-white overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-nb-warm/40 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal-text">
+                    <div class="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-black/10">
+                        <img src="Assets/phume.png" 
+                             alt="Elegant hair styling" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 glass rounded-2xl p-6 shadow-xl max-w-xs">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-nb-gold flex items-center justify-center">
+                                <i class="fa-solid fa-crown text-nb-dark text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="font-display text-lg text-nb-black">Premium Care</p>
+                                <p class="text-xs text-nb-stone">Every strand matters</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -z-10 -top-8 -left-8 w-full h-full bg-gradient-to-br from-nb-warm to-nb-gold/30 rounded-3xl"></div>
+                </div>
+
+                <div class="reveal-text">
+                    <p class="font-script text-5xl text-nb-black mb-2">Our Story</p>
+                    <h3 class="font-display text-3xl md:text-4xl text-nb-black tracking-wider uppercase mb-6">Crafted with Passion</h3>
+                    <div class="w-20 h-px bg-gradient-to-r from-nb-gold to-transparent mb-8"></div>
+                    <p class="text-nb-stone leading-relaxed mb-6 text-lg">
+                        At Bloom & Breeze, we believe every woman deserves to feel confidently elegant. Specializing in premium hair services, IV therapy, lashes, and nail care, we transform your vision into reality.
+                    </p>
+                    <p class="text-nb-stone leading-relaxed mb-10">
+                        From cornrows to weave installations, manicures to IV drips, our meticulous attention to detail ensures a flawless finish every time. We treat every client with the care they deserve.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass rounded-xl p-5">
+                            <i class="fa-solid fa-wand-magic-sparkles text-nb-black mb-3"></i>
+                            <p class="font-medium text-nb-black text-sm">Expert Stylists</p>
+                            <p class="text-xs text-nb-stone mt-1">Trained in latest techniques</p>
+                        </div>
+                        <div class="glass rounded-xl p-5">
+                            <i class="fa-solid fa-leaf text-nb-black mb-3"></i>
+                            <p class="font-medium text-nb-black text-sm">Natural Results</p>
+                            <p class="text-xs text-nb-stone mt-1">Undetectable finishes</p>
+                        </div>
+                        <div class="glass rounded-xl p-5">
+                            <i class="fa-solid fa-droplet text-nb-black mb-3"></i>
+                            <p class="font-medium text-nb-black text-sm">Premium Products</p>
+                            <p class="text-xs text-nb-stone mt-1">Only the best for you</p>
+                        </div>
+                        <div class="glass rounded-xl p-5">
+                            <i class="fa-solid fa-heart text-nb-black mb-3"></i>
+                            <p class="font-medium text-nb-black text-sm">Loyal Clients</p>
+                            <p class="text-xs text-nb-stone mt-1">They keep coming back</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MEET THE TEAM SECTION ===== -->
+    <section id="team" class="relative py-24 lg:py-32 bg-nb-cream overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(245,230,211,0.4)_0%,_transparent_50%)]"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-nb-warm/30 rounded-full filter blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal-text">
+                <p class="font-script text-6xl md:text-7xl text-nb-black mb-4">The Stylist</p>
+                <h3 class="font-display text-2xl md:text-3xl text-nb-black tracking-widest uppercase">Meet The Team</h3>
+                <div class="w-24 h-px bg-gradient-to-r from-transparent via-nb-gold to-transparent mx-auto mt-6"></div>
+                <p class="text-nb-stone mt-6 max-w-md mx-auto">The talented hands and hearts behind every transformation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 stagger-children">
+                <!-- Team Member 1 -->
+                <div class="group reveal-text">
+                    <div class="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl mb-6">
+                        <img src="Assets/Lady-2.png" alt="Lead Stylist" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                            <div class="flex gap-3">
+                                <a href="#" class="w-9 h-9 rounded-full bg-nb-gold/20 backdrop-blur-md border border-nb-gold/30 flex items-center justify-center text-white hover:bg-nb-gold hover:text-nb-dark transition-all">
+                                    <i class="fa-brands fa-instagram text-xs"></i>
+                                </a>
+                                <a href="#" class="w-9 h-9 rounded-full bg-nb-gold/20 backdrop-blur-md border border-nb-gold/30 flex items-center justify-center text-white hover:bg-nb-gold hover:text-nb-dark transition-all">
+                                    <i class="fa-brands fa-tiktok text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-display text-xl text-nb-black tracking-wide">Ndalo</h4>
+                        <p class="text-nb-stone text-sm mt-1">Lead Stylist & Founder</p>
+                        <div class="w-12 h-px bg-nb-gold mx-auto mt-3"></div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="group reveal-text">
+                    <div class="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl mb-6">
+                        <img src="Assets/Lady-1.png" alt="Braiding Specialist" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                            <div class="flex gap-3">
+                                <a href="#" class="w-9 h-9 rounded-full bg-nb-gold/20 backdrop-blur-md border border-nb-gold/30 flex items-center justify-center text-white hover:bg-nb-gold hover:text-nb-dark transition-all">
+                                    <i class="fa-brands fa-instagram text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-display text-xl text-nb-black tracking-wide">Zama</h4>
+                        <p class="text-nb-stone text-sm mt-1">Braiding Specialist</p>
+                        <div class="w-12 h-px bg-nb-gold mx-auto mt-3"></div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="group reveal-text">
+                    <div class="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl mb-6">
+                        <img src="Assets/Lady-2.png" alt="Nail Technician" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                            <div class="flex gap-3">
+                                <a href="#" class="w-9 h-9 rounded-full bg-nb-gold/20 backdrop-blur-md border border-nb-gold/30 flex items-center justify-center text-white hover:bg-nb-gold hover:text-nb-dark transition-all">
+                                    <i class="fa-brands fa-instagram text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-display text-xl text-nb-black tracking-wide">Lindiwe</h4>
+                        <p class="text-nb-stone text-sm mt-1">Nail & Lash Artist</p>
+                        <div class="w-12 h-px bg-nb-gold mx-auto mt-3"></div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="group reveal-text">
+                    <div class="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl mb-6">
+                        <img src="Assets/Lady-1.png" alt="IV Therapy Nurse" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                            <div class="flex gap-3">
+                                <a href="#" class="w-9 h-9 rounded-full bg-nb-gold/20 backdrop-blur-md border border-nb-gold/30 flex items-center justify-center text-white hover:bg-nb-gold hover:text-nb-dark transition-all">
+                                    <i class="fa-brands fa-instagram text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-display text-xl text-nb-black tracking-wide">Londy</h4>
+                        <p class="text-nb-stone text-sm mt-1">IV Therapy Specialist</p>
+                        <div class="w-12 h-px bg-nb-gold mx-auto mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICE LIST SECTION ===== -->
+    <section id="pricelist" class="relative py-24 lg:py-32 bg-nb-dark overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(60,60,60,0.4)_0%,_transparent_50%)]"></div>
+        <div class="absolute -top-40 right-0 w-96 h-96 bg-nb-charcoal rounded-full filter blur-3xl opacity-30"></div>
+        <div class="absolute -bottom-40 left-0 w-96 h-96 bg-nb-stone rounded-full filter blur-3xl opacity-30"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal-text">
+                <p class="font-script text-6xl md:text-7xl text-white mb-4">Price List</p>
+                <div class="w-24 h-px bg-gradient-to-r from-transparent via-nb-gold/40 to-transparent mx-auto mt-6"></div>
+                <p class="text-nb-cream/60 mt-6 max-w-lg mx-auto">Opening price list valid from 01 June – 31 August 2025. Transparent pricing for all our premium services.</p>
+
+                <!-- Download Button -->
+                <button onclick="downloadPriceList()" class="mt-8 inline-flex items-center gap-3 px-8 py-4 bg-nb-gold text-nb-dark text-sm tracking-widest uppercase font-medium rounded-full hover:bg-nb-light transition-all duration-300 btn-shine shadow-lg shadow-black/20">
+                    <i class="fa-solid fa-download"></i>
+                    Download Price List
+                </button>
+            </div>
+
+            
+            <div class="mt-16 text-center reveal-text">
+                <div class="bg-nb-gold/10 backdrop-blur-md border border-nb-gold/20 inline-flex items-center gap-3 px-8 py-4 rounded-full">
+                    <i class="fa-solid fa-mug-hot text-nb-gold/60 text-sm"></i>
+                    <p class="text-nb-cream/60 text-sm">Complimentary drinks menu: Water, Juice, Sparkling Wine, Coffee & Wine with every visit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OUR WORKSPACE SECTION ===== -->
+    <section id="workspace" class="relative py-24 lg:py-32 mesh-white overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-nb-warm/40 to-transparent"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-nb-gold/10 rounded-full filter blur-3xl animate-blob"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-nb-warm/30 rounded-full filter blur-3xl animate-blob-slow"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal-text">
+                <p class="font-script text-6xl md:text-7xl text-nb-black mb-4">The Space</p>
+                <h3 class="font-display text-2xl md:text-3xl text-nb-black tracking-widest uppercase">Our Workspace</h3>
+                <div class="w-24 h-px bg-gradient-to-r from-transparent via-nb-gold to-transparent mx-auto mt-6"></div>
+                <p class="text-nb-stone mt-6 max-w-md mx-auto">Step inside our sanctuary. A warm, welcoming environment designed for your comfort.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+                <!-- Workspace Image 1 -->
+                <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
+                    <img src="Assets/chairs.png" alt="Salon Interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <p class="text-white font-display text-lg">Styling Stations</p>
+                        <p class="text-white/70 text-sm">Where the magic happens</p>
+                    </div>
+                </div>
+
+                <!-- Workspace Image 2 -->
+                <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
+                    <img src="Assets/room.png" alt="Waiting Area" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <p class="text-white font-display text-lg">Lounge Area</p>
+                        <p class="text-white/70 text-sm">Relax before your session</p>
+                    </div>
+                </div>
+
+                <!-- Workspace Image 3 -->
+                <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
+                    <img src="Assets/nail.png" alt="Nail Bar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <p class="text-white font-display text-lg">Nail Bar</p>
+                        <p class="text-white/70 text-sm">Manicure & Pedicure suite</p>
+                    </div>
+                </div>
+
+                <!-- Workspace Image 4 -->
+                <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
+                    <img src="Assets/iv-drip.png" alt="IV Therapy Room" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <p class="text-white font-display text-lg">IV Therapy Suite</p>
+                        <p class="text-white/70 text-sm">Private & serene</p>
+                    </div>
+                </div>
+
+                <!-- Workspace Image 5 -->
+                <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
+                    <img src="Assets/mirror.png" alt="Product Display" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <p class="text-white font-display text-lg">Product Wall</p>
+                        <p class="text-white/70 text-sm">Premium hair care products</p>
+                    </div>
+                </div>
+
+                <!-- Workspace Image 6 -->
+                <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
+                    <img src="Assets/snacks.png" alt="Reception" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <p class="text-white font-display text-lg">Reception</p>
+                        <p class="text-white/70 text-sm">Your first welcome</p>
+                    </div>
+                </div>
+
+                <!-- Workspace Image 7 -->
+                <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
+                    <img src="Assets/kids.png" alt="Vanity Corner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <p class="text-white font-display text-lg">Vanity Corner</p>
+                        <p class="text-white/70 text-sm">Lashes & touch-ups</p>
+                    </div>
+                </div>
+
+                <!-- Workspace Image 8 -->
+                <div class="group img-zoom rounded-3xl overflow-hidden shadow-xl aspect-[3/4] reveal-text">
+                    <img src="Assets/bed.png" alt="Full Salon View" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nb-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <p class="text-white font-display text-lg">The Full View</p>
+                        <p class="text-white/70 text-sm">Bloom & Breeze Beauty Bar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark Experience Section -->
+    <section id="experience" class="relative py-24 lg:py-32 mesh-dark overflow-hidden">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-nb-charcoal rounded-full filter blur-[100px] opacity-20 animate-blob"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-nb-stone rounded-full filter blur-[100px] opacity-15 animate-blob-slow"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal-text">
+                    <div class="relative aspect-video rounded-3xl overflow-hidden border border-nb-gold/20 shadow-2xl shadow-black/40 bg-black">
+                        <div class="video-card absolute inset-0">
+<div style="width:100%; background:#000; display:flex; justify-content:center; align-items:center; aspect-ratio:16/9;">
+  <iframe 
+    src="https://player.vimeo.com/video/1194859479?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0&badge=0&autopause=0" 
+    style="width:auto; height:100%; aspect-ratio:9/16;" 
+    frameborder="0" 
+    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    title="WhatsApp Video">
+  </iframe>
+</div>        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 z-10">
+                            <div class="glass-dark rounded-full px-4 py-2 inline-flex items-center gap-2 mb-3">
+                                <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                                <span class="text-xs text-white/80 tracking-wider uppercase">Live Process</span>
+                            </div>
+                            <p class="font-display text-2xl text-white">The Art of Installation</p>
+                        </div>
+                    </div>
+                    <div class="absolute -top-6 -left-6 w-24 h-24 border border-nb-gold/20 rounded-2xl"></div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 border border-nb-gold/20 rounded-full"></div>
+                </div>
+
+                <div class="reveal-text">
+                    <p class="font-script text-5xl gradient-text-light mb-4">The Experience</p>
+                    <h3 class="font-display text-3xl md:text-4xl text-white tracking-wider uppercase mb-6">Behind Every Install</h3>
+                    <div class="w-20 h-px bg-gradient-to-r from-nb-gold to-transparent mb-8"></div>
+                    <p class="text-nb-cream/70 leading-relaxed mb-6 text-lg">
+                        Every installation is a masterpiece. From precise lace cutting to seamless blending, our process ensures your weave looks like it's growing from your scalp.
+                    </p>
+                    <p class="text-nb-cream/70 leading-relaxed mb-10">
+                        We use only premium products for washing and revival treatments, restoring life to every strand. Your investment deserves professional care.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card rounded-xl p-5">
+                            <div class="w-10 h-10 rounded-full bg-nb-gold/20 flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-check text-nb-gold text-sm"></i>
+                            </div>
+                            <p class="text-nb-black text-sm font-medium">Precision Lace</p>
+                            <p class="text-nb-stone text-xs mt-1">Cutting & Fitting</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-5">
+                            <div class="w-10 h-10 rounded-full bg-nb-gold/20 flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-check text-nb-gold text-sm"></i>
+                            </div>
+                            <p class="text-nb-black text-sm font-medium">Bleached Knots</p>
+                            <p class="text-nb-stone text-xs mt-1">Natural Scalp Look</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-5">
+                            <div class="w-10 h-10 rounded-full bg-nb-gold/20 flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-check text-nb-gold text-sm"></i>
+                            </div>
+                            <p class="text-nb-black text-sm font-medium">Hairline Pluck</p>
+                            <p class="text-nb-stone text-xs mt-1">Undetectable Finish</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-5">
+                            <div class="w-10 h-10 rounded-full bg-nb-gold/20 flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-check text-nb-gold text-sm"></i>
+                            </div>
+                            <p class="text-nb-black text-sm font-medium">Secure Hold</p>
+                            <p class="text-nb-stone text-xs mt-1">Long-Lasting Wear</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <div id="portfolio"></div>
+    <section id="gallery" class="relative py-24 lg:py-32 bg-nb-cream overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(240,240,240,0.5)_0%,_transparent_50%)]"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal-text">
+                <p class="font-script text-6xl md:text-7xl text-nb-black mb-4">Portfolio</p>
+                <h3 class="font-display text-2xl md:text-3xl text-nb-black tracking-widest uppercase">Transformations</h3>
+                <div class="w-24 h-px bg-gradient-to-r from-transparent via-nb-gold to-transparent mx-auto mt-6"></div>
+                <p class="text-nb-stone mt-6 max-w-md mx-auto">A glimpse into our latest installations, styling, and hair transformations.</p>
+            </div>
+
+            <div class="gallery-scroller" id="gallery-scroller">
+                <div class="gallery-track scroll-left" id="gallery-col-1">
+                <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img src="Assets/WhatsApp%20Image%202026-05-19%20at%2020.25.44.jpeg" 
+                         alt="Portfolio 1" class="w-full h-full object-cover transition-all duration-700 hover:grayscale" loading="lazy">
+                </div>
+                <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img src="Assets/WhatsApp%20Image%202026-05-19%20at%2020.25.46.jpeg" 
+                         alt="Portfolio 2" class="w-full h-full object-cover transition-all duration-700 hover:grayscale" loading="lazy">
+                </div>
+                <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img src="Assets/WhatsApp%20Image%202026-05-19%20at%2020.25.47%20(1).jpeg" 
+                         alt="Portfolio 3" class="w-full h-full object-cover transition-all duration-700 hover:grayscale" loading="lazy">
+                </div>
+                <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img src="Assets/WhatsApp%20Image%202026-05-19%20at%2020.25.47%20(2).jpeg" 
+                         alt="Portfolio 4" class="w-full h-full object-cover transition-all duration-700 hover:grayscale" loading="lazy">
+                </div>
+                </div>
+                <div class="gallery-track scroll-right" id="gallery-col-2">
+                <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img src="Assets/WhatsApp%20Image%202026-05-19%20at%2020.25.47.jpeg" 
+                         alt="Portfolio 5" class="w-full h-full object-cover transition-all duration-700 hover:grayscale" loading="lazy">
+                </div>
+                <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img src="Assets/WhatsApp%20Image%202026-05-19%20at%2020.25.48.jpeg" 
+                         alt="Portfolio 6" class="w-full h-full object-cover transition-all duration-700 hover:grayscale" loading="lazy">
+                </div>
+                <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img src="Assets/WhatsApp%20Image%202026-05-19%20at%2020.25.49.jpeg" 
+                         alt="Portfolio 7" class="w-full h-full object-cover transition-all duration-700 hover:grayscale" loading="lazy">
+                </div>
+                <div class="img-zoom rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img src="Assets/Ndalo.jpeg" 
+                         alt="Portfolio 8" class="w-full h-full object-cover transition-all duration-700 hover:grayscale" loading="lazy">
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact & Hours Section -->
+    <section id="contact" class="relative py-24 lg:py-32 mesh-white overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-nb-warm/30 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal-text">
+                    <p class="font-script text-5xl text-nb-black mb-4">Visit Us</p>
+                    <h3 class="font-display text-3xl text-nb-black tracking-wider uppercase mb-8">Operating Hours</h3>
+                    <div class="w-20 h-px bg-gradient-to-r from-nb-gold to-transparent mb-8"></div>
+
+                    <div class="glass rounded-2xl overflow-hidden shadow-lg">
+                        <div class="day-slot flex justify-between items-center py-4 px-6 border-b border-nb-gold/10">
+                            <span class="text-nb-stone tracking-widest uppercase text-sm font-medium">Monday</span>
+                            <span class="font-display text-nb-black">9AM - 6PM</span>
+                        </div>
+                        <div class="day-slot flex justify-between items-center py-4 px-6 border-b border-nb-gold/10">
+                            <span class="text-nb-stone tracking-widest uppercase text-sm font-medium">Tuesday</span>
+                            <span class="font-display text-nb-black">9AM - 6PM</span>
+                        </div>
+                        <div class="day-slot flex justify-between items-center py-4 px-6 border-b border-nb-gold/10">
+                            <span class="text-nb-stone tracking-widest uppercase text-sm font-medium">Wednesday</span>
+                            <span class="font-display text-nb-black">9AM - 6PM</span>
+                        </div>
+                        <div class="day-slot flex justify-between items-center py-4 px-6 border-b border-nb-gold/10">
+                            <span class="text-nb-stone tracking-widest uppercase text-sm font-medium">Thursday</span>
+                            <span class="font-display text-nb-black">9AM - 4PM</span>
+                        </div>
+                        <div class="day-slot flex justify-between items-center py-4 px-6 border-b border-nb-gold/10">
+                            <span class="text-nb-stone tracking-widest uppercase text-sm font-medium">Friday</span>
+                            <span class="font-display text-nb-black">9AM - 4PM</span>
+                        </div>
+                        <div class="day-slot flex justify-between items-center py-4 px-6 border-b border-nb-gold/10">
+                            <span class="text-nb-stone tracking-widest uppercase text-sm font-medium">Saturday</span>
+                            <span class="font-display text-nb-black">9AM - 5PM</span>
+                        </div>
+                        <div class="flex justify-between items-center py-4 px-6 bg-nb-gold/10">
+                            <span class="text-nb-stone/50 tracking-widest uppercase text-sm font-medium">Sunday</span>
+                            <span class="font-display text-nb-stone/50">Closed</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <a href="tel:+27602252652" class="glass rounded-xl p-5 flex items-center gap-4 hover:bg-white/80 transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-full bg-nb-gold flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-phone text-nb-dark text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs tracking-widest uppercase text-nb-stone">Phone</p>
+                                <p class="text-nb-black font-medium">+27 60 225 2652</p>
+                            </div>
+                        </a>
+                        <div class="glass rounded-xl p-5 flex flex-col items-start gap-3">
+                            <div class="w-12 h-12 rounded-full bg-nb-gold/10 flex items-center justify-center">
+                                <i class="fa-solid fa-envelope text-nb-black text-sm"></i>
+                            </div>
+                            <div class="w-full">
+                                <p class="text-xs tracking-widest uppercase text-nb-stone">Email</p>
+                                <p class="text-nb-black font-medium text-sm break-words">bookings@naturesbeautycorner.co.za</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-text">
+                    <p class="font-script text-5xl text-nb-black mb-4">Connect</p>
+                    <h3 class="font-display text-3xl text-nb-black tracking-wider uppercase mb-8">Book Appointment</h3>
+                    <div class="w-20 h-px bg-gradient-to-r from-nb-gold to-transparent mb-8"></div>
+
+                    <form id="booking-form" class="glass rounded-3xl p-8 lg:p-10 shadow-xl space-y-5">
+                        <div>
+                            <label class="text-xs tracking-widest uppercase text-nb-stone mb-2 block">Your Name</label>
+                            <input type="text" placeholder="Full Name" class="w-full px-5 py-4 rounded-xl input-glass text-sm" required>
+                        </div>
+                        <div>
+                            <label class="text-xs tracking-widest uppercase text-nb-stone mb-2 block">Phone Number</label>
+                            <input type="tel" placeholder="+27 ..." class="w-full px-5 py-4 rounded-xl input-glass text-sm" required>
+                        </div>
+                        <div>
+                            <label class="text-xs tracking-widest uppercase text-nb-stone mb-2 block">Select Service</label>
+                            <select class="w-full px-5 py-4 rounded-xl input-glass text-sm text-nb-stone">
+                                <option value="">Choose a service...</option>
+                                <option value="snoop">Snoop (Cornrows)</option>
+                                <option value="straight-back">Straight Back</option>
+                                <option value="knotless">Knotless Braids</option>
+                                <option value="straight-up">Straight Up</option>
+                                <option value="sweet-sour">Sweet & Sour / Lemonade</option>
+                                <option value="weave">Weave Installation</option>
+                                <option value="lashes">Lashes</option>
+                                <option value="manicure">Manicure & Pedicure</option>
+                                <option value="iv-therapy">IV Therapy</option>
+                                <option value="kids">Kids Styling</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="text-xs tracking-widest uppercase text-nb-stone mb-2 block">Preferred Date</label>
+                                <input type="date" class="w-full px-5 py-4 rounded-xl input-glass text-sm" required>
+                            </div>
+                            <div>
+                                <label class="text-xs tracking-widest uppercase text-nb-stone mb-2 block">Preferred Time</label>
+                                <select class="w-full px-5 py-4 rounded-xl input-glass text-sm text-nb-stone" required>
+                                    <option value="">Select time...</option>
+                                    <option value="09:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-xs tracking-widest uppercase text-nb-stone mb-2 block">Message</label>
+                            <textarea placeholder="Any special requests?" rows="3" class="w-full px-5 py-4 rounded-xl input-glass text-sm resize-none"></textarea>
+                        </div>
+                        <button id="booking-submit" type="submit" class="w-full py-4 bg-nb-gold text-nb-dark text-sm tracking-widest uppercase font-medium rounded-xl hover:bg-nb-light transition-all duration-300 btn-shine shadow-lg shadow-black/20">
+                            Send Booking Request
+                        </button>
+                        <p id="booking-message" class="hidden text-center text-sm font-medium"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-nb-dark py-16 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-nb-charcoal rounded-full filter blur-[120px] opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12 justify-items-center md:justify-items-stretch">
+                <!-- Column 1: Logo -->
+                <div class="flex flex-col items-center md:items-start max-w-xs md:max-w-none mb-8 md:mb-0">
+                <img src="Assets/Lond-2nd.webp" alt="Nature's Beauty Corner Logo" class="h-20 w-25 object-contain">
+                    <p class="text-nb-cream/70 text-sm leading-relaxed mt-8">Timeless Elegance, Naturally Yours. Premium hair, nails, lashes & IV therapy services crafted with passion and expertise.</p>
+                </div>
+
+                <!-- Column 2: Services -->
+                <div class="ml-0 md:ml-6">
+                    <h4 class="font-display text-sm text-white tracking-widest uppercase mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Cornrows & Braids</a></li>
+                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Weave Installation</a></li>
+                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Lashes</a></li>
+                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Manicure & Pedicure</a></li>
+                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">IV Therapy</a></li>
+                        <li><a href="#pricelist" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Kids Styling</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Quick Links -->
+                <div>
+                    <h4 class="font-display text-sm text-white tracking-widest uppercase mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">About Us</a></li>
+                        <li><a href="#team" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Meet The Team</a></li>
+                        <li><a href="#gallery" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Gallery</a></li>
+                        <li><a href="#workspace" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Our Space</a></li>
+                        <li><a href="#contact" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact -->
+                <div>
+                    <h4 class="font-display text-sm text-white tracking-widest uppercase mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <p class="text-xs tracking-widest uppercase text-nb-stone mb-1">Address</p>
+                            <p class="text-nb-cream/70 text-sm">Glenwood Devenport</p>
+                        </li>
+                        <li>
+                            <p class="text-xs tracking-widest uppercase text-nb-stone mb-1">Phone</p>
+                            <a href="tel:+27602252652" class="text-nb-cream/70 text-sm hover:text-nb-gold transition-colors">+27 60 225 2652</a>
+                        </li>
+                    </ul>
+                    <div class="flex justify-center md:justify-start gap-3 mt-6">
+                        <a href="https://www.instagram.com/naturesbeauty_corner?igsh=MXBiZ29odHNhY3JrdA==" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-nb-gold/20 flex items-center justify-center text-nb-gold/50 hover:text-nb-gold hover:border-nb-gold/40 transition-all">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@naturesbeauty_cor?_r=1&_t=ZS-96VwVs6rQaz" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-nb-gold/20 flex items-center justify-center text-nb-gold/50 hover:text-nb-gold hover:border-nb-gold/40 transition-all">
+                            <i class="fa-brands fa-tiktok text-sm"></i>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-nb-gold/20 flex items-center justify-center text-nb-gold/50 hover:text-nb-gold hover:border-nb-gold/40 transition-all">
+                            <i class="fa-brands fa-facebook-f text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-nb-gold/10 pt-8 text-center">
+                <p class="text-nb-gold/30 text-xs tracking-wider">© 2026 Bloom & Breeze. All rights reserved.</p>
+                <p class="text-nb-gold/50 text-xs tracking-wider mt-2">Designed and developed with <i class="fa-solid fa-heart text-nb-gold"></i> <a href="https://oceans88labs.co.za/" target="_blank" class="text-nb-cream/70 hover:text-nb-gold transition-colors no-underline">Oceans88labs</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== DOWNLOADABLE PRICE LIST OVERLAY ===== -->
+    <div id="price-list-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-nb-dark/90 backdrop-blur-md" onclick="closePriceList()"></div>
+        <div class="relative z-10 w-full h-full overflow-y-auto p-4 md:p-8">
+            <div class="max-w-4xl mx-auto bg-nb-cream rounded-3xl shadow-2xl overflow-hidden">
+                <div class="p-8 md:p-12">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="text-center w-full">
+                        <img src="Assets/Lond-2nd.webp" alt="Nature's Beauty Corner Logo" class="h-20 w-25 object-contain">
+                            <h2 class="font-display text-3xl text-nb-black tracking-widest uppercase">Price List</h2>
+                            <p class="text-nb-stone text-sm mt-2">Opening Price List | Valid: 01 June – 31 August 2025</p>
+                        </div>
+                        <button onclick="closePriceList()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-nb-dark/10 flex items-center justify-center text-nb-black hover:bg-nb-dark/20 transition-all">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                        <div>
+                            <h3 class="font-display text-lg text-nb-black tracking-wider uppercase mb-4 border-b border-nb-gold/30 pb-2">Hair</h3>
+                            <div class="space-y-3">
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">Snoop (Cornrows)</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">Big Lines</span><span class="font-display">R60</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Medium Lines</span><span class="font-display">R120</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Small Lines</span><span class="font-display">R170</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">With Hairpiece</span><span class="font-display">R200</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Gel Styled</span><span class="font-display">R200</span></div>
+
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">Straight Back</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">Large</span><span class="font-display">R150</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Medium</span><span class="font-display">R200</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Small</span><span class="font-display">R250</span></div>
+
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">Knotless Braids</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">Large</span><span class="font-display">R250</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Medium</span><span class="font-display">R350</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Small</span><span class="font-display">R450</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">With French Curls</span><span class="font-display">R500</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Goddess Braids</span><span class="font-display">R500</span></div>
+
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">Straight Up</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">All Sizes</span><span class="font-display">R250</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Extra Length</span><span class="font-display">R280</span></div>
+
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">Sweet & Sour / Lemonade</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">Normal Size (Short)</span><span class="font-display">R250</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Long</span><span class="font-display">R350</span></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-display text-lg text-nb-black tracking-wider uppercase mb-4 border-b border-nb-gold/30 pb-2">More Services</h3>
+                            <div class="space-y-3">
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">Weave Installation</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">Basic Installation</span><span class="font-display">R250</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Styling</span><span class="font-display">R300</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Frontal Ponytail</span><span class="font-display">R350</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Frontal Ponytail + Curls</span><span class="font-display">R400</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Bridal Styling</span><span class="font-display">R500</span></div>
+
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">Lashes</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">Cluster Lashes</span><span class="font-display">R200</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Individual Lashes</span><span class="font-display">R300</span></div>
+
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">Manicure & Pedicure</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">Hands – Tips Plain</span><span class="font-display">R130</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Hands – French</span><span class="font-display">R200</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Hands – Any Design</span><span class="font-display">R250</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Toes – Gel Overlay</span><span class="font-display">R100</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Toes – French</span><span class="font-display">R120</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone font-medium">Combo: Hands & Toes</span><span class="font-display text-nb-gold">R300</span></div>
+
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">IV Therapy</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">Glow Drip</span><span class="font-display text-nb-gold">R550</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Weightloss Drip</span><span class="font-display text-nb-gold">R550</span></div>
+
+                                <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mt-4 mb-2">Extras</p>
+                                <div class="flex justify-between"><span class="text-nb-stone">Hair Wash</span><span class="font-display">R40</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Afro Comb Out</span><span class="font-display">R60</span></div>
+                                <div class="flex justify-between"><span class="text-nb-stone">Silky Treatment</span><span class="font-display">R50</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-nb-gold/20">
+                        <p class="font-semibold text-nb-black text-xs tracking-widest uppercase mb-3">For Kids</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                            <div class="flex justify-between"><span class="text-nb-stone">Snoop</span><span class="font-display">From R100</span></div>
+                            <div class="flex justify-between"><span class="text-nb-stone">Straight Back</span><span class="font-display">R150–R200</span></div>
+                            <div class="flex justify-between"><span class="text-nb-stone">Sweet & Sour</span><span class="font-display">R200–R250</span></div>
+                            <div class="flex justify-between"><span class="text-nb-stone">Knotless</span><span class="font-display">R280</span></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <p class="text-nb-stone text-xs">Complimentary drinks: Water, Juice, Sparkling Wine, Coffee & Wine</p>
+                        <p class="text-nb-stone/60 text-xs mt-2">Prices may vary based on hair condition. Terms & Conditions apply.</p>
+                    </div>
+
+                    <div class="mt-8 flex justify-center gap-4 no-print">
+                        <button onclick="window.print()" class="px-8 py-3 bg-nb-gold text-nb-dark text-sm tracking-widest uppercase font-medium rounded-full hover:bg-nb-light transition-all">
+                            <i class="fa-solid fa-print mr-2"></i>Print / Save PDF
+                        </button>
+                        <button onclick="closePriceList()" class="px-8 py-3 border border-nb-black/20 text-nb-black text-sm tracking-widest uppercase font-medium rounded-full hover:bg-nb-black/5 transition-all">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        function downloadPriceList() {
+            document.getElementById('price-list-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePriceList() {
+            document.getElementById('price-list-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    </script>
+
+
+<script>
+/* ===== INFINITE GALLERY SCROLLER ===== */
+(function() {
+    function initInfiniteScroller() {
+        const track1 = document.getElementById('gallery-col-1');
+        const track2 = document.getElementById('gallery-col-2');
+        if (!track1 || !track2) return;
+
+        // Clone all children into each track for seamless horizontal loop
+        [track1, track2].forEach(track => {
+            const items = Array.from(track.children);
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                track.appendChild(clone);
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initInfiniteScroller);
+    } else {
+        initInfiniteScroller();
+    }
+})();
+</script>
+
+</body>
+</html>
